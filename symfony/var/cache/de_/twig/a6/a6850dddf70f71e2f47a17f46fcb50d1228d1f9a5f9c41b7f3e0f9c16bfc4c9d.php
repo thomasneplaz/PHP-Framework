@@ -71,12 +71,12 @@ class __TwigTemplate_fc4f1f17314f02472bd3b5afcddeea5cac8c86a3696572a5c6cecc98b24
         // line 6
         echo "    <h1>Module index</h1>
 
-    <table class=\"table\">
+    <table class=\"table col-lg-12\">
         <thead>
             <tr>
-                <th>IdModule</th>
-                <th>LibelleModule</th>
-                <th>PrixModule</th>
+                <th>Id</th>
+                <th>Libellé</th>
+                <th>Prix</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -89,34 +89,36 @@ class __TwigTemplate_fc4f1f17314f02472bd3b5afcddeea5cac8c86a3696572a5c6cecc98b24
         foreach ($context['_seq'] as $context["_key"] => $context["module"]) {
             // line 19
             echo "            <tr>
-                <td>";
+                <td class=\"col-md-3\">";
             // line 20
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["module"], "idModule", array()), "html", null, true);
             echo "</td>
-                <td>";
+                <td class=\"col-md-3\">";
             // line 21
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["module"], "libelleModule", array()), "html", null, true);
             echo "</td>
-                <td>";
+                <td class=\"col-md-3\">";
             // line 22
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["module"], "prixModule", array()), "html", null, true);
-            echo "</td>
-                <td>
-                    <a href=\"";
-            // line 24
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("module_show", array("idModule" => twig_get_attribute($this->env, $this->source, $context["module"], "idModule", array()))), "html", null, true);
-            echo "\">show</a>
-                    <a href=\"";
+            echo " €</td>
+                <td class=\"col-md-3\">
+                    <div class=\"dropdown-menu\">
+                        <a href=\"";
             // line 25
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("module_show", array("idModule" => twig_get_attribute($this->env, $this->source, $context["module"], "idModule", array()))), "html", null, true);
+            echo "\">Détails</a>
+                        <a href=\"";
+            // line 26
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("module_edit", array("idModule" => twig_get_attribute($this->env, $this->source, $context["module"], "idModule", array()))), "html", null, true);
-            echo "\">edit</a>
+            echo "\">Editer</a>
+                    </div>
                 </td>
             </tr>
         ";
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 29
+            // line 31
             echo "            <tr>
                 <td colspan=\"4\">no records found</td>
             </tr>
@@ -125,12 +127,12 @@ class __TwigTemplate_fc4f1f17314f02472bd3b5afcddeea5cac8c86a3696572a5c6cecc98b24
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['module'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 33
+        // line 35
         echo "        </tbody>
     </table>
 
     <a href=\"";
-        // line 36
+        // line 38
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("module_new");
         echo "\">Create new</a>
 ";
@@ -154,7 +156,7 @@ class __TwigTemplate_fc4f1f17314f02472bd3b5afcddeea5cac8c86a3696572a5c6cecc98b24
 
     public function getDebugInfo()
     {
-        return array (  134 => 36,  129 => 33,  120 => 29,  111 => 25,  107 => 24,  102 => 22,  98 => 21,  94 => 20,  91 => 19,  86 => 18,  72 => 6,  63 => 5,  45 => 3,  15 => 1,);
+        return array (  136 => 38,  131 => 35,  122 => 31,  112 => 26,  108 => 25,  102 => 22,  98 => 21,  94 => 20,  91 => 19,  86 => 18,  72 => 6,  63 => 5,  45 => 3,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -166,24 +168,26 @@ class __TwigTemplate_fc4f1f17314f02472bd3b5afcddeea5cac8c86a3696572a5c6cecc98b24
 {% block body %}
     <h1>Module index</h1>
 
-    <table class=\"table\">
+    <table class=\"table col-lg-12\">
         <thead>
             <tr>
-                <th>IdModule</th>
-                <th>LibelleModule</th>
-                <th>PrixModule</th>
+                <th>Id</th>
+                <th>Libellé</th>
+                <th>Prix</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for module in modules %}
             <tr>
-                <td>{{ module.idModule }}</td>
-                <td>{{ module.libelleModule }}</td>
-                <td>{{ module.prixModule }}</td>
-                <td>
-                    <a href=\"{{ path('module_show', {'idModule': module.idModule}) }}\">show</a>
-                    <a href=\"{{ path('module_edit', {'idModule': module.idModule}) }}\">edit</a>
+                <td class=\"col-md-3\">{{ module.idModule }}</td>
+                <td class=\"col-md-3\">{{ module.libelleModule }}</td>
+                <td class=\"col-md-3\">{{ module.prixModule }} €</td>
+                <td class=\"col-md-3\">
+                    <div class=\"dropdown-menu\">
+                        <a href=\"{{ path('module_show', {'idModule': module.idModule}) }}\">Détails</a>
+                        <a href=\"{{ path('module_edit', {'idModule': module.idModule}) }}\">Editer</a>
+                    </div>
                 </td>
             </tr>
         {% else %}
@@ -195,6 +199,7 @@ class __TwigTemplate_fc4f1f17314f02472bd3b5afcddeea5cac8c86a3696572a5c6cecc98b24
     </table>
 
     <a href=\"{{ path('module_new') }}\">Create new</a>
-{% endblock %}", "module/index.html.twig", "/var/www/html/PHP-Framework/symfony/templates/module/index.html.twig");
+{% endblock %}
+", "module/index.html.twig", "/var/www/html/PHP-Framework/symfony/templates/module/index.html.twig");
     }
 }
