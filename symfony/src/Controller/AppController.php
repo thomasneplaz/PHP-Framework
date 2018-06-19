@@ -10,7 +10,7 @@ class AppController extends Controller
     /**
      * @Route("/", name="home_page")
      */
-    public function indexAction()
+    public function index()
     {
         return $this->render('app/index.html.twig', [
             'controller_name' => 'AppController',
