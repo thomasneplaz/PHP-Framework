@@ -28,7 +28,57 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             $canonicalMethod = 'GET';
         }
 
-        if (0 === strpos($pathinfo, '/module')) {
+        // location_delete
+        if (0 === strpos($pathinfo, '/location') && preg_match('#^/location/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+            $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'location_delete')), array (  '_controller' => 'App\\Controller\\LocationController::delete',));
+            if (!in_array($requestMethod, array('DELETE'))) {
+                $allow = array_merge($allow, array('DELETE'));
+                goto not_location_delete;
+            }
+
+            return $ret;
+        }
+        not_location_delete:
+
+        if (0 === strpos($pathinfo, '/locations')) {
+            // location
+            if ('/locations' === $pathinfo) {
+                return array (  '_controller' => 'App\\Controller\\LocationController::index',  '_route' => 'location',);
+            }
+
+            // location_index
+            if ('/locations' === $trimmedPathinfo) {
+                $ret = array (  '_controller' => 'App\\Controller\\LocationController::index',  '_route' => 'location_index',);
+                if ('/' === substr($pathinfo, -1)) {
+                    // no-op
+                } elseif ('GET' !== $canonicalMethod) {
+                    goto not_location_index;
+                } else {
+                    return array_replace($ret, $this->redirect($rawPathinfo.'/', 'location_index'));
+                }
+
+                return $ret;
+            }
+            not_location_index:
+
+            // location_new
+            if ('/locations/new' === $pathinfo) {
+                return array (  '_controller' => 'App\\Controller\\LocationController::new',  '_route' => 'location_new',);
+            }
+
+            // location_show
+            if (preg_match('#^/locations/(?P<idModule>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'location_show')), array (  '_controller' => 'App\\Controller\\LocationController::show',));
+            }
+
+            // location_edit
+            if (preg_match('#^/locations/(?P<idModule>[^/]++)/edit$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'location_edit')), array (  '_controller' => 'App\\Controller\\LocationController::edit',));
+            }
+
+        }
+
+        elseif (0 === strpos($pathinfo, '/module')) {
             // modulemodule_index
             if ('/module' === $trimmedPathinfo) {
                 $ret = array (  '_controller' => 'App\\Controller\\ModuleController::index',  '_route' => 'modulemodule_index',);
@@ -298,11 +348,6 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return $ret;
         }
         not_home_page:
-
-        // location_index
-        if ('/locations' === $pathinfo) {
-            return array (  '_controller' => 'App\\Controller\\LocationController::index',  '_route' => 'location_index',);
-        }
 
         if ('/' === $pathinfo && !$allow) {
             throw new Symfony\Component\Routing\Exception\NoConfigurationException();
