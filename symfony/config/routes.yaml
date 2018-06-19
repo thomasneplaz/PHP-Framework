@@ -1,6 +1,6 @@
 home_page:
     path: /
-    defaults: 
+    defaults:
       _controller: 'App\Controller\AppController::index'
 module:
     path: /module
