@@ -50,9 +50,7 @@ class __TwigTemplate_75966bd50bd27970aa65de0faecbb4ae463560ea987b6237d3808c2aceb
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
-        echo "Hello ";
-        echo twig_escape_filter($this->env, (isset($context["controller_name"]) || array_key_exists("controller_name", $context) ? $context["controller_name"] : (function () { throw new Twig_Error_Runtime('Variable "controller_name" does not exist.', 3, $this->source); })()), "html", null, true);
-        echo "!";
+        echo "Hello!";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -71,28 +69,35 @@ class __TwigTemplate_75966bd50bd27970aa65de0faecbb4ae463560ea987b6237d3808c2aceb
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        echo "<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+        echo "
 
 <div class=\"example-wrapper\">
-    <h1>Hello ";
-        // line 12
-        echo twig_escape_filter($this->env, (isset($context["controller_name"]) || array_key_exists("controller_name", $context) ? $context["controller_name"] : (function () { throw new Twig_Error_Runtime('Variable "controller_name" does not exist.', 12, $this->source); })()), "html", null, true);
-        echo "! ✅</h1>
+<nav id=\"navbar-example2\" class=\"navbar navbar-light bg-light\">
+<a class=\"navbar-brand\" href=\"#\">Accueil</a>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href=\"";
-        // line 16
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\CodeExtension']->getFileLink("src/Controller/AppController.php", 0), "html", null, true);
-        echo "\">src/Controller/AppController.php</a></code></li>
-        <li>Your template at <code><a href=\"";
-        // line 17
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\CodeExtension']->getFileLink("templates/app/index.html.twig", 0), "html", null, true);
-        echo "\">templates/app/index.html.twig</a></code></li>
-    </ul>
+<ul class=\"nav nav-pills\">
+<li class=\"nav-item\">
+<a class=\"nav-link\" href=\"#fat\">Location de Salle</a>
+</li>
+
+<li class=\"nav-item\">
+<a class=\"nav-link\" href=\"#mdo\">Generer une facture</a>
+</li>
+
+<li class=\"nav-item dropdown\">
+<a class=\"nav-link dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Compte</a>
+<div class=\"dropdown-menu\">
+<a class=\"dropdown-item\" href=\"#one\">Connexion</a>
+<a class=\"dropdown-item\" href=\"#two\">Inscription</a>
+
+</li>
+</ul>
+</nav>
+
+</div>
+    <h1>Bienvenue dans notre Application de location de salle! </h1>
+
+
 </div>
 ";
         
@@ -115,29 +120,45 @@ class __TwigTemplate_75966bd50bd27970aa65de0faecbb4ae463560ea987b6237d3808c2aceb
 
     public function getDebugInfo()
     {
-        return array (  93 => 17,  89 => 16,  82 => 12,  74 => 6,  65 => 5,  45 => 3,  15 => 1,);
+        return array (  72 => 6,  63 => 5,  45 => 3,  15 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Twig_Source("{% extends 'base.html.twig' %}
 
-{% block title %}Hello {{ controller_name }}!{% endblock %}
+{% block title %}Hello!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+
 
 <div class=\"example-wrapper\">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<nav id=\"navbar-example2\" class=\"navbar navbar-light bg-light\">
+<a class=\"navbar-brand\" href=\"#\">Accueil</a>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href=\"{{ 'src/Controller/AppController.php'|file_link(0) }}\">src/Controller/AppController.php</a></code></li>
-        <li>Your template at <code><a href=\"{{ 'templates/app/index.html.twig'|file_link(0) }}\">templates/app/index.html.twig</a></code></li>
-    </ul>
+<ul class=\"nav nav-pills\">
+<li class=\"nav-item\">
+<a class=\"nav-link\" href=\"#fat\">Location de Salle</a>
+</li>
+
+<li class=\"nav-item\">
+<a class=\"nav-link\" href=\"#mdo\">Generer une facture</a>
+</li>
+
+<li class=\"nav-item dropdown\">
+<a class=\"nav-link dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Compte</a>
+<div class=\"dropdown-menu\">
+<a class=\"dropdown-item\" href=\"#one\">Connexion</a>
+<a class=\"dropdown-item\" href=\"#two\">Inscription</a>
+
+</li>
+</ul>
+</nav>
+
+</div>
+    <h1>Bienvenue dans notre Application de location de salle! </h1>
+
+
 </div>
 {% endblock %}
 ", "app/index.html.twig", "/var/www/html/PHP-Framework/symfony/templates/app/index.html.twig");

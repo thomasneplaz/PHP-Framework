@@ -17,3 +17,6 @@ module_show:
 module_edit:
     path: /module/{idModule}/edit
     defaults: {_controller: 'App\Controller\ModuleController::edit'}
+module_delete:
+    path: /module/{idModule}
+    defaults: {_controller: 'App\Controller\ModuleController::delete'}

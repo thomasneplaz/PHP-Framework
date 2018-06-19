@@ -132,6 +132,11 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'module_edit')), array (  '_controller' => 'App\\Controller\\ModuleController::edit',));
             }
 
+            // module_delete
+            if (preg_match('#^/module/(?P<idModule>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'module_delete')), array (  '_controller' => 'App\\Controller\\ModuleController::delete',));
+            }
+
         }
 
         elseif (0 === strpos($pathinfo, '/user')) {
