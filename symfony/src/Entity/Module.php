@@ -28,14 +28,14 @@ class Module
      */
     private $prixModule;
 
-    public function getId()
+    public function getIdModule()
     {
         return $this->idModule;
     }
 
-    public function setIdmodule(int $idmodule): self
+    public function setIdModule(int $idModule): self
     {
-        $this->idmodule = $idmodule;
+        $this->idModule = $idModule;
 
         return $this;
     }

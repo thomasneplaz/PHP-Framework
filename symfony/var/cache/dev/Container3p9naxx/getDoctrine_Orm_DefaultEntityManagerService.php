@@ -44,6 +44,8 @@ $b->setQuoteStrategy(new \Doctrine\ORM\Mapping\DefaultQuoteStrategy());
 $b->setEntityListenerResolver(${($_ = isset($this->services['doctrine.orm.default_entity_listener_resolver']) ? $this->services['doctrine.orm.default_entity_listener_resolver'] : $this->services['doctrine.orm.default_entity_listener_resolver'] = new \Doctrine\Bundle\DoctrineBundle\Mapping\ContainerAwareEntityListenerResolver($this)) && false ?: '_'});
 $b->setRepositoryFactory(new \Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory(new \Symfony\Component\DependencyInjection\ServiceLocator(array('App\\Repository\\ModuleRepository' => function () {
     return ${($_ = isset($this->services['App\Repository\ModuleRepository']) ? $this->services['App\Repository\ModuleRepository'] : $this->load('getModuleRepositoryService.php')) && false ?: '_'};
+}, 'App\\Repository\\UserRepository' => function () {
+    return ${($_ = isset($this->services['App\Repository\UserRepository']) ? $this->services['App\Repository\UserRepository'] : $this->load('getUserRepositoryService.php')) && false ?: '_'};
 }))));
 
 $this->services['doctrine.orm.default_entity_manager'] = $instance = \Doctrine\ORM\EntityManager::create(${($_ = isset($this->services['doctrine.dbal.default_connection']) ? $this->services['doctrine.dbal.default_connection'] : $this->load('getDoctrine_Dbal_DefaultConnectionService.php')) && false ?: '_'}, $b);

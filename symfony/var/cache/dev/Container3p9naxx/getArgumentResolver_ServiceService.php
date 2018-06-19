@@ -10,6 +10,10 @@ include_once $this->targetDirs[3].'/vendor/symfony/http-kernel/Controller/Argume
 
 return $this->services['argument_resolver.service'] = new \Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver(new \Symfony\Component\DependencyInjection\ServiceLocator(array('App\\Controller\\ModuleController:index' => function () {
     return ${($_ = isset($this->services['service_locator.6rca7gt']) ? $this->services['service_locator.6rca7gt'] : $this->load('getServiceLocator_6rca7gtService.php')) && false ?: '_'};
+}, 'App\\Controller\\UserController:index' => function () {
+    return ${($_ = isset($this->services['service_locator.fgurx8j']) ? $this->services['service_locator.fgurx8j'] : $this->load('getServiceLocator_Fgurx8jService.php')) && false ?: '_'};
 }, 'App\\Controller\\ModuleController::index' => function () {
     return ${($_ = isset($this->services['service_locator.6rca7gt']) ? $this->services['service_locator.6rca7gt'] : $this->load('getServiceLocator_6rca7gtService.php')) && false ?: '_'};
+}, 'App\\Controller\\UserController::index' => function () {
+    return ${($_ = isset($this->services['service_locator.fgurx8j']) ? $this->services['service_locator.fgurx8j'] : $this->load('getServiceLocator_Fgurx8jService.php')) && false ?: '_'};
 })));

@@ -1,6 +1,6 @@
 <?php
 
-namespace ContainerRpgwmxe;
+namespace Container3p9naxx;
 
 use Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -37,8 +37,11 @@ class srcDevDebugProjectContainer extends Container
         $this->normalizedIds = array(
             'app\\controller\\appcontroller' => 'App\\Controller\\AppController',
             'app\\controller\\modulecontroller' => 'App\\Controller\\ModuleController',
+            'app\\controller\\usercontroller' => 'App\\Controller\\UserController',
             'app\\form\\moduletype' => 'App\\Form\\ModuleType',
+            'app\\form\\usertype' => 'App\\Form\\UserType',
             'app\\repository\\modulerepository' => 'App\\Repository\\ModuleRepository',
+            'app\\repository\\userrepository' => 'App\\Repository\\UserRepository',
             'symfony\\bundle\\frameworkbundle\\controller\\redirectcontroller' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\RedirectController',
             'symfony\\bundle\\frameworkbundle\\controller\\templatecontroller' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\TemplateController',
         );
@@ -132,8 +135,11 @@ class srcDevDebugProjectContainer extends Container
         $this->fileMap = array(
             'App\\Controller\\AppController' => 'getAppControllerService.php',
             'App\\Controller\\ModuleController' => 'getModuleControllerService.php',
+            'App\\Controller\\UserController' => 'getUserControllerService.php',
             'App\\Form\\ModuleType' => 'getModuleTypeService.php',
+            'App\\Form\\UserType' => 'getUserTypeService.php',
             'App\\Repository\\ModuleRepository' => 'getModuleRepositoryService.php',
+            'App\\Repository\\UserRepository' => 'getUserRepositoryService.php',
             'Symfony\\Bundle\\FrameworkBundle\\Controller\\RedirectController' => 'getRedirectControllerService.php',
             'Symfony\\Bundle\\FrameworkBundle\\Controller\\TemplateController' => 'getTemplateControllerService.php',
             'annotations.cache' => 'getAnnotations_CacheService.php',
@@ -319,6 +325,7 @@ class srcDevDebugProjectContainer extends Container
             'serializer.mapping.cache.symfony' => 'getSerializer_Mapping_Cache_SymfonyService.php',
             'serializer.mapping.cache_warmer' => 'getSerializer_Mapping_CacheWarmerService.php',
             'service_locator.6rca7gt' => 'getServiceLocator_6rca7gtService.php',
+            'service_locator.fgurx8j' => 'getServiceLocator_Fgurx8jService.php',
             'services_resetter' => 'getServicesResetterService.php',
             'session' => 'getSessionService.php',
             'session.storage.filesystem' => 'getSession_Storage_FilesystemService.php',
@@ -396,7 +403,9 @@ class srcDevDebugProjectContainer extends Container
             'swiftmailer.transport' => true,
             'swiftmailer.transport.real' => true,
             'App\\Form\\ModuleType' => true,
+            'App\\Form\\UserType' => true,
             'App\\Repository\\ModuleRepository' => true,
+            'App\\Repository\\UserRepository' => true,
             'annotation_reader' => true,
             'annotations.cache' => true,
             'annotations.cache_warmer' => true,
@@ -590,6 +599,7 @@ class srcDevDebugProjectContainer extends Container
             'serializer.mapping.cache.symfony' => true,
             'serializer.mapping.cache_warmer' => true,
             'service_locator.6rca7gt' => true,
+            'service_locator.fgurx8j' => true,
             'session.save_listener' => true,
             'session.storage.filesystem' => true,
             'session.storage.metadata_bag' => true,

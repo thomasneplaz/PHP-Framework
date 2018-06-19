@@ -12,6 +12,8 @@ include_once $this->targetDirs[3].'/vendor/symfony/form/FormRegistry.php';
 
 return $this->services['form.registry'] = new \Symfony\Component\Form\FormRegistry(array(0 => new \Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension(new \Symfony\Component\DependencyInjection\ServiceLocator(array('App\\Form\\ModuleType' => function () {
     return ${($_ = isset($this->services['App\Form\ModuleType']) ? $this->services['App\Form\ModuleType'] : $this->services['App\Form\ModuleType'] = new \App\Form\ModuleType()) && false ?: '_'};
+}, 'App\\Form\\UserType' => function () {
+    return ${($_ = isset($this->services['App\Form\UserType']) ? $this->services['App\Form\UserType'] : $this->services['App\Form\UserType'] = new \App\Form\UserType()) && false ?: '_'};
 }, 'Symfony\\Bridge\\Doctrine\\Form\\Type\\EntityType' => function () {
     return ${($_ = isset($this->services['form.type.entity']) ? $this->services['form.type.entity'] : $this->load('getForm_Type_EntityService.php')) && false ?: '_'};
 }, 'Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType' => function () {

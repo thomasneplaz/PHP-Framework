@@ -11,3 +11,9 @@ module_index:
 module_new:
     path: /module/new
     defaults: {_controller: 'App\Controller\ModuleController::new'}
+module_show:
+    path: /module/{idModule}
+    defaults: {_controller: 'App\Controller\ModuleController::show'}
+module_edit:
+    path: /module/{idModule}/edit
+    defaults: {_controller: 'App\Controller\ModuleController::edit'}
