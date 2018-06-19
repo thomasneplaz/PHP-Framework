@@ -28,22 +28,80 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             $canonicalMethod = 'GET';
         }
 
-        // home_age
-        if ('' === $trimmedPathinfo) {
-            $ret = array (  '_controller' => 'App\\Controller\\AppController::indexAction',  '_route' => 'home_age',);
-            if ('/' === substr($pathinfo, -1)) {
-                // no-op
-            } elseif ('GET' !== $canonicalMethod) {
-                goto not_home_age;
-            } else {
-                return array_replace($ret, $this->redirect($rawPathinfo.'/', 'home_age'));
+        if (0 === strpos($pathinfo, '/module')) {
+            // modulemodule_index
+            if ('/module' === $trimmedPathinfo) {
+                $ret = array (  '_controller' => 'App\\Controller\\ModuleController::index',  '_route' => 'modulemodule_index',);
+                if ('/' === substr($pathinfo, -1)) {
+                    // no-op
+                } elseif ('GET' !== $canonicalMethod) {
+                    goto not_modulemodule_index;
+                } else {
+                    return array_replace($ret, $this->redirect($rawPathinfo.'/', 'modulemodule_index'));
+                }
+
+                if (!in_array($canonicalMethod, array('GET'))) {
+                    $allow = array_merge($allow, array('GET'));
+                    goto not_modulemodule_index;
+                }
+
+                return $ret;
+            }
+            not_modulemodule_index:
+
+            // modulemodule_new
+            if ('/module/new' === $pathinfo) {
+                $ret = array (  '_controller' => 'App\\Controller\\ModuleController::new',  '_route' => 'modulemodule_new',);
+                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
+                    $allow = array_merge($allow, array('GET', 'POST'));
+                    goto not_modulemodule_new;
+                }
+
+                return $ret;
+            }
+            not_modulemodule_new:
+
+            // modulemodule_show
+            if (preg_match('#^/module/(?P<idModule>[^/]++)$#sD', $pathinfo, $matches)) {
+                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'modulemodule_show')), array (  '_controller' => 'App\\Controller\\ModuleController::show',));
+                if (!in_array($canonicalMethod, array('GET'))) {
+                    $allow = array_merge($allow, array('GET'));
+                    goto not_modulemodule_show;
+                }
+
+                return $ret;
+            }
+            not_modulemodule_show:
+
+            // modulemodule_edit
+            if (preg_match('#^/module/(?P<idModule>[^/]++)/edit$#sD', $pathinfo, $matches)) {
+                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'modulemodule_edit')), array (  '_controller' => 'App\\Controller\\ModuleController::edit',));
+                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
+                    $allow = array_merge($allow, array('GET', 'POST'));
+                    goto not_modulemodule_edit;
+                }
+
+                return $ret;
+            }
+            not_modulemodule_edit:
+
+            // modulemodule_delete
+            if (preg_match('#^/module/(?P<idModule>[^/]++)$#sD', $pathinfo, $matches)) {
+                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'modulemodule_delete')), array (  '_controller' => 'App\\Controller\\ModuleController::delete',));
+                if (!in_array($requestMethod, array('DELETE'))) {
+                    $allow = array_merge($allow, array('DELETE'));
+                    goto not_modulemodule_delete;
+                }
+
+                return $ret;
+            }
+            not_modulemodule_delete:
+
+            // module
+            if ('/module' === $pathinfo) {
+                return array (  '_controller' => 'App\\Controller\\ModuleController',  '_route' => 'module',);
             }
 
-            return $ret;
-        }
-        not_home_age:
-
-        if (0 === strpos($pathinfo, '/module')) {
             // module_index
             if ('/module' === $trimmedPathinfo) {
                 $ret = array (  '_controller' => 'App\\Controller\\ModuleController::index',  '_route' => 'module_index',);
@@ -55,62 +113,14 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     return array_replace($ret, $this->redirect($rawPathinfo.'/', 'module_index'));
                 }
 
-                if (!in_array($canonicalMethod, array('GET'))) {
-                    $allow = array_merge($allow, array('GET'));
-                    goto not_module_index;
-                }
-
                 return $ret;
             }
             not_module_index:
 
             // module_new
             if ('/module/new' === $pathinfo) {
-                $ret = array (  '_controller' => 'App\\Controller\\ModuleController::new',  '_route' => 'module_new',);
-                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
-                    $allow = array_merge($allow, array('GET', 'POST'));
-                    goto not_module_new;
-                }
-
-                return $ret;
+                return array (  '_controller' => 'App\\Controller\\ModuleController::new',  '_route' => 'module_new',);
             }
-            not_module_new:
-
-            // module_show
-            if (preg_match('#^/module/(?P<idModule>[^/]++)$#sD', $pathinfo, $matches)) {
-                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'module_show')), array (  '_controller' => 'App\\Controller\\ModuleController::show',));
-                if (!in_array($canonicalMethod, array('GET'))) {
-                    $allow = array_merge($allow, array('GET'));
-                    goto not_module_show;
-                }
-
-                return $ret;
-            }
-            not_module_show:
-
-            // module_edit
-            if (preg_match('#^/module/(?P<idModule>[^/]++)/edit$#sD', $pathinfo, $matches)) {
-                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'module_edit')), array (  '_controller' => 'App\\Controller\\ModuleController::edit',));
-                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
-                    $allow = array_merge($allow, array('GET', 'POST'));
-                    goto not_module_edit;
-                }
-
-                return $ret;
-            }
-            not_module_edit:
-
-            // module_delete
-            if (preg_match('#^/module/(?P<idModule>[^/]++)$#sD', $pathinfo, $matches)) {
-                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'module_delete')), array (  '_controller' => 'App\\Controller\\ModuleController::delete',));
-                if (!in_array($requestMethod, array('DELETE'))) {
-                    $allow = array_merge($allow, array('DELETE'));
-                    goto not_module_delete;
-                }
-
-                return $ret;
-            }
-            not_module_delete:
 
         }
 

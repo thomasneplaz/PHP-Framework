@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/module")
+ * @Route("/module", name="module")
  */
 class ModuleController extends Controller
 {

@@ -40,6 +40,7 @@ final class Versions
   'psr/simple-cache' => '1.0.1@408d5eafb83c57f6365a3ca330ff23aa4a5fa39b',
   'sensio/framework-extra-bundle' => 'v5.1.6@bf4940572e43af679aaa13be98f3446a1c237bd8',
   'swiftmailer/swiftmailer' => 'v6.0.2@412333372fb6c8ffb65496a2bbd7321af75733fc',
+  'symfony/apache-pack' => 'v1.0.1@3aa5818d73ad2551281fc58a75afd9ca82622e6c',
   'symfony/asset' => 'v3.4.11@89e9267bf33a8214efceb1ead12fb73504e81089',
   'symfony/cache' => 'v3.4.11@b6f157d4529a3484f60ebc40661b5232526fb432',
   'symfony/class-loader' => 'v3.4.11@e63c12699822bb3b667e7216ba07fbcc3a3e203e',
@@ -104,7 +105,7 @@ final class Versions
   'symfony/var-dumper' => 'v3.4.11@0e6545672d8c9ce70dd472adc2f8b03155a46f73',
   'symfony/web-profiler-bundle' => 'v3.4.11@95bcad717c7a9826c4ffbf510d10179e876563ec',
   'symfony/web-server-bundle' => 'v3.4.11@d4c15d1dc4672bce74e4c27ffda3c9b5436e736a',
-  '__root__' => 'dev-master@a37b4ad4d0618c92e4cde8e2528d89d8a900f011',
+  '__root__' => 'dev-modules@45aea530612e04dd1facdf6c8b76be5ef3720e08',
 );
 
     private function __construct()
