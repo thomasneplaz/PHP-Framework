@@ -26,7 +26,7 @@ class Salles
         return $this->id;
     }
 
-    public function getNom(): string
+    public function getNom()
     {
         return $this->nom;
     }
