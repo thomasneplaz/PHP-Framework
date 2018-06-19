@@ -286,7 +286,7 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         // home_page
         if ('' === $trimmedPathinfo) {
-            $ret = array (  '_controller' => 'App\\Controller\\AppController::index',  '_route' => 'home_page',);
+            $ret = array (  '_controller' => 'App\\Controller\\AppController::indexAction',  '_route' => 'home_page',);
             if ('/' === substr($pathinfo, -1)) {
                 // no-op
             } elseif ('GET' !== $canonicalMethod) {
@@ -298,6 +298,11 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return $ret;
         }
         not_home_page:
+
+        // location_index
+        if ('/locations' === $pathinfo) {
+            return array (  '_controller' => 'App\\Controller\\LocationController::index',  '_route' => 'location_index',);
+        }
 
         if ('/' === $pathinfo && !$allow) {
             throw new Symfony\Component\Routing\Exception\NoConfigurationException();
