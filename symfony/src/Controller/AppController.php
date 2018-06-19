@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class AppController extends Controller
 {
     /**
-     * @Route("/", name="home_age")
+     * @Route("/", name="home_page")
      */
     public function indexAction()
     {

@@ -1,4 +1,5 @@
-home_page:
-    path: /
-    defaults: 
-      _controller: 'App\Controller\AppController::index'
+# home_page:
+#    path: /
+#    defaults: 
+#      _controller: 'App\Controller\AppController::index'
+
