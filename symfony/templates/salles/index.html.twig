@@ -10,7 +10,9 @@
             <tr>
                 <th>Id</th>
                 <th>Nom</th>
-                <th>actions</th>
+                <th>Adresse</th>
+                <th>Prix</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -18,6 +20,8 @@
             <tr>
                 <td>{{ salle.id }}</td>
                 <td>{{ salle.nom }}</td>
+                <td>{{ salle.Adress }}</td>
+                <td>{{ salle.prix }} €</td>
                 <td>
                     <a href="{{ path('salles_show', {'id': salle.id}) }}">show</a>
                     <a href="{{ path('salles_edit', {'id': salle.id}) }}">edit</a>
@@ -31,5 +35,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('salles_new') }}">Create new</a>
+    <a href="{{ path('salles_new') }}"><button class="btn btn-primary">Create new</button></a>
 {% endblock %}

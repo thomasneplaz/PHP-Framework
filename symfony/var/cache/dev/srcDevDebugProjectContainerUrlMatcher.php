@@ -28,7 +28,164 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             $canonicalMethod = 'GET';
         }
 
-        if (0 === strpos($pathinfo, '/_')) {
+        // home_page
+        if ('' === $trimmedPathinfo) {
+            $ret = array (  '_controller' => 'App\\Controller\\AppController::index',  '_route' => 'home_page',);
+            if ('/' === substr($pathinfo, -1)) {
+                // no-op
+            } elseif ('GET' !== $canonicalMethod) {
+                goto not_home_page;
+            } else {
+                return array_replace($ret, $this->redirect($rawPathinfo.'/', 'home_page'));
+            }
+
+            return $ret;
+        }
+        not_home_page:
+
+        if (0 === strpos($pathinfo, '/salles')) {
+            // salles_index
+            if ('/salles' === $trimmedPathinfo) {
+                $ret = array (  '_controller' => 'App\\Controller\\SallesController::index',  '_route' => 'salles_index',);
+                if ('/' === substr($pathinfo, -1)) {
+                    // no-op
+                } elseif ('GET' !== $canonicalMethod) {
+                    goto not_salles_index;
+                } else {
+                    return array_replace($ret, $this->redirect($rawPathinfo.'/', 'salles_index'));
+                }
+
+                if (!in_array($canonicalMethod, array('GET'))) {
+                    $allow = array_merge($allow, array('GET'));
+                    goto not_salles_index;
+                }
+
+                return $ret;
+            }
+            not_salles_index:
+
+            // salles_new
+            if ('/salles/new' === $pathinfo) {
+                $ret = array (  '_controller' => 'App\\Controller\\SallesController::new',  '_route' => 'salles_new',);
+                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
+                    $allow = array_merge($allow, array('GET', 'POST'));
+                    goto not_salles_new;
+                }
+
+                return $ret;
+            }
+            not_salles_new:
+
+            // salles_show
+            if (preg_match('#^/salles/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'salles_show')), array (  '_controller' => 'App\\Controller\\SallesController::show',));
+                if (!in_array($canonicalMethod, array('GET'))) {
+                    $allow = array_merge($allow, array('GET'));
+                    goto not_salles_show;
+                }
+
+                return $ret;
+            }
+            not_salles_show:
+
+            // salles_edit
+            if (preg_match('#^/salles/(?P<id>[^/]++)/edit$#sD', $pathinfo, $matches)) {
+                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'salles_edit')), array (  '_controller' => 'App\\Controller\\SallesController::edit',));
+                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
+                    $allow = array_merge($allow, array('GET', 'POST'));
+                    goto not_salles_edit;
+                }
+
+                return $ret;
+            }
+            not_salles_edit:
+
+            // salles_delete
+            if (preg_match('#^/salles/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'salles_delete')), array (  '_controller' => 'App\\Controller\\SallesController::delete',));
+                if (!in_array($requestMethod, array('DELETE'))) {
+                    $allow = array_merge($allow, array('DELETE'));
+                    goto not_salles_delete;
+                }
+
+                return $ret;
+            }
+            not_salles_delete:
+
+        }
+
+        elseif (0 === strpos($pathinfo, '/user')) {
+            // user_index
+            if ('/user' === $trimmedPathinfo) {
+                $ret = array (  '_controller' => 'App\\Controller\\UserController::index',  '_route' => 'user_index',);
+                if ('/' === substr($pathinfo, -1)) {
+                    // no-op
+                } elseif ('GET' !== $canonicalMethod) {
+                    goto not_user_index;
+                } else {
+                    return array_replace($ret, $this->redirect($rawPathinfo.'/', 'user_index'));
+                }
+
+                if (!in_array($canonicalMethod, array('GET'))) {
+                    $allow = array_merge($allow, array('GET'));
+                    goto not_user_index;
+                }
+
+                return $ret;
+            }
+            not_user_index:
+
+            // user_new
+            if ('/user/new' === $pathinfo) {
+                $ret = array (  '_controller' => 'App\\Controller\\UserController::new',  '_route' => 'user_new',);
+                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
+                    $allow = array_merge($allow, array('GET', 'POST'));
+                    goto not_user_new;
+                }
+
+                return $ret;
+            }
+            not_user_new:
+
+            // user_show
+            if (preg_match('#^/user/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'user_show')), array (  '_controller' => 'App\\Controller\\UserController::show',));
+                if (!in_array($canonicalMethod, array('GET'))) {
+                    $allow = array_merge($allow, array('GET'));
+                    goto not_user_show;
+                }
+
+                return $ret;
+            }
+            not_user_show:
+
+            // user_edit
+            if (preg_match('#^/user/(?P<id>[^/]++)/edit$#sD', $pathinfo, $matches)) {
+                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'user_edit')), array (  '_controller' => 'App\\Controller\\UserController::edit',));
+                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
+                    $allow = array_merge($allow, array('GET', 'POST'));
+                    goto not_user_edit;
+                }
+
+                return $ret;
+            }
+            not_user_edit:
+
+            // user_delete
+            if (preg_match('#^/user/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'user_delete')), array (  '_controller' => 'App\\Controller\\UserController::delete',));
+                if (!in_array($requestMethod, array('DELETE'))) {
+                    $allow = array_merge($allow, array('DELETE'));
+                    goto not_user_delete;
+                }
+
+                return $ret;
+            }
+            not_user_delete:
+
+        }
+
+        elseif (0 === strpos($pathinfo, '/_')) {
             // _twig_error_test
             if (0 === strpos($pathinfo, '/_error') && preg_match('#^/_error/(?P<code>\\d+)(?:\\.(?P<_format>[^/]++))?$#sD', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => '_twig_error_test')), array (  '_controller' => 'twig.controller.preview_error:previewErrorPageAction',  '_format' => 'html',));

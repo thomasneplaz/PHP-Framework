@@ -1659,6 +1659,6 @@ class __TwigTemplate_70dc93966cd91ea14855a7ef7124f24bd87f9131832366f2da39a1071c7
         </tbody>
     </table>
 {% endmacro %}
-", "@Doctrine/Collector/db.html.twig", "/var/www/html/symfony/vendor/doctrine/doctrine-bundle/Resources/views/Collector/db.html.twig");
+", "@Doctrine/Collector/db.html.twig", "/var/www/html/PHP-Framework/symfony/vendor/doctrine/doctrine-bundle/Resources/views/Collector/db.html.twig");
     }
 }

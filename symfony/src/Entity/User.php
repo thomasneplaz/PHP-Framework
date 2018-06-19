@@ -36,7 +36,7 @@ class User
         return $this->id;
     }
 
-    public function getNom(): string
+    public function getNom()
     {
         return $this->nom;
     }
@@ -48,7 +48,7 @@ class User
         return $this;
     }
 
-    public function getPrenom(): string
+    public function getPrenom()
     {
         return $this->prenom;
     }
@@ -60,7 +60,7 @@ class User
         return $this;
     }
 
-    public function getRole(): string
+    public function getRole()
     {
         return $this->role;
     }

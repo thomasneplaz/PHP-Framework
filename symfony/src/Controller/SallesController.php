@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 /**
  * @Route("/salles")
@@ -40,6 +41,10 @@ class SallesController extends Controller
             return $this->redirectToRoute('salles_index');
         }
 
+        $form->add('save', SubmitType::class, [
+            'label'=> 'Ajouter'
+        ]);
+
         return $this->render('salles/new.html.twig', [
             'salle' => $salle,
             'form' => $form->createView(),
@@ -67,6 +72,10 @@ class SallesController extends Controller
 
             return $this->redirectToRoute('salles_edit', ['id' => $salle->getId()]);
         }
+
+        $form->add('save', SubmitType::class, [
+            'label'=> 'Modifier'
+        ]);
 
         return $this->render('salles/edit.html.twig', [
             'salle' => $salle,

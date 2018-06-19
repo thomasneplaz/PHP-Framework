@@ -21,6 +21,16 @@ class Salles
      */
     private $nom;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $adress;
+
+    /**
+     * @ORM\Column(type="integer", nullable=false)
+     */
+    private $prix;
+
     public function getId()
     {
         return $this->id;
@@ -34,6 +44,30 @@ class Salles
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getAdress()
+    {
+        return $this->adress;
+    }
+
+    public function setAdress($adress)
+    {
+        $this->adress = $adress;
+
+        return $this;
+    }
+
+    public function getPrix()
+    {
+        return $this->prix;
+    }
+
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
 
         return $this;
     }

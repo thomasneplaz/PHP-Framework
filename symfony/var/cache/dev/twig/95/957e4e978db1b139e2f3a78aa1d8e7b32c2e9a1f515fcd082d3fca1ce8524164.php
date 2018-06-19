@@ -164,6 +164,6 @@ class __TwigTemplate_85555cf2546d378f3dd2a5d31fd3a747d6c1b6a23ac3ba5e3b61a5d65ad
         </tr>
     </tbody>
 </table>
-", "@Twig/Exception/traces_text.html.twig", "/var/www/html/symfony/vendor/symfony/twig-bundle/Resources/views/Exception/traces_text.html.twig");
+", "@Twig/Exception/traces_text.html.twig", "/var/www/html/PHP-Framework/symfony/vendor/symfony/twig-bundle/Resources/views/Exception/traces_text.html.twig");
     }
 }
