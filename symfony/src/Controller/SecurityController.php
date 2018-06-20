@@ -24,4 +24,16 @@ class SecurityController extends Controller
 	        'error'         => $error,
 	    ));
     }
+    /**
+    * La route pour se deconnecter.
+    *
+    * Mais celle ci ne doit jamais être executé car symfony l'interceptera avant.
+    *
+    *
+    * @Route("/logout", name="logout")
+    */
+   public function logout(): void
+   {
+       throw new \Exception('This should never be reached!');
+   }
 }

@@ -1,1 +1,4 @@
 
+logout:
+    path: /logout
+

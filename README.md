@@ -1,3 +1,4 @@
 # PHP-Framework
-student project on synfony
-cOUCOU
+
+Symfony framework, student week work project
+

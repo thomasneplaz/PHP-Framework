@@ -14,5 +14,12 @@ class AppController extends Controller
     {
         return $this->render('app/index.html.twig');
     }
+    /**
+     * @Route("/admin", name="admin")
+     */
+    public function admin()
+    {
+        return $this->render('admin/index.html.twig');
+    }
 
 }

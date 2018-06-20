@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}UserSalle index{% endblock %}
+
+{% block body %}
+    <h1>UserSalle index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>IdUser</th>
+                <th>IdSalle</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user_salle in user_salles %}
+            <tr>
+                <td>{{ user_salle.id }}</td>
+                <td>{{ user_salle.idUser }}</td>
+                <td>{{ user_salle.idSalle }}</td>
+                <td>
+                    <a href="{{ path('user_salle_show', {'id': user_salle.id}) }}">show</a>
+                    <a href="{{ path('user_salle_edit', {'id': user_salle.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('user_salle_new') }}">Create new</a>
+{% endblock %}
