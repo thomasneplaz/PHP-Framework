@@ -12,8 +12,7 @@ class AppController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('app/index.html.twig', [
-            'controller_name' => 'AppController',
-        ]);
+        return $this->render('app/index.html.twig');
     }
+
 }

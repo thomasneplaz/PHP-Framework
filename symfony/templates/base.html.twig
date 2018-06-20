@@ -12,7 +12,27 @@
         {% endblock %}
     </head>
     <body>
+      <div class="example-wrapper">
+          <nav id="navbar-example2" class="navbar navbar-light bg-light">
+              <a class="navbar-brand" href="{{path('home_page')}}">Accueil</a>
+              <a class="nav-link" href="">Location de Salle</a>
+              <a class="nav-link" href="">Generer une facture</a>
+              <!-- <a class="navbar-brand" href="">User</a> -->
 
+
+              <ul class="nav nav-pills">
+
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Compte</a>
+                      <div class="dropdown-menu">
+                          <a class="dropdown-item" href="{{ path('login') }}">Connexion</a>
+                          <a class="dropdown-item" href="{{ path('user_new') }}">Inscription</a>
+                      </div>
+                  </li>
+              </ul>
+          </nav>
+
+      </div>
         {% block body %}
 
         {% endblock %}

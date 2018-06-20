@@ -2,39 +2,37 @@
 
 namespace App\Form;
 
-use App\Entity\User;
+use App\Entity\Salles;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
-
-class UserType extends AbstractType
+class SallesType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username', TextType::class, [
-                'label' => 'Username',
+            ->add('nom', TextType::Class, [
+                'label' => 'Nom de la nouvelle salle',
                 'required' => true
             ])
-            ->add('password', PasswordType::Class, [
-                'label' => 'Password',
+            ->add('adress', TextType::Class, [
+                'label' => 'Adresse de la salle',
                 'required' => true
             ])
-            ->add('nom')
-            ->add('prenom')
-            ->add('roles')
-            ->add('isActive')
+            ->add('prix', IntegerType::Class, [
+                'label' => 'Prix de la location pour la journée',
+                'required' => true
+            ])
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => User::class,
+            'data_class' => Salles::class,
         ]);
     }
 }

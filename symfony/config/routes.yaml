@@ -22,7 +22,6 @@ module_delete:
     path: /module/{idModule}
     defaults: {_controller: 'App\Controller\ModuleController::delete'}
 
-
 module_salle:
     path: /module/salle
     defaults: {_controller: 'App\Controller\ModuleSalleController'}
@@ -41,3 +40,4 @@ module_salle_edit:
 module_salle_delete:
     path: /module/salle/{idModule}
     defaults: {_controller: 'App\Controller\ModuleSalleController::delete'}
+
