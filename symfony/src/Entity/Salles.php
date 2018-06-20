@@ -31,6 +31,12 @@ class Salles
      */
     private $prix;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $client;
+
     public function getId()
     {
         return $this->id;
@@ -70,5 +76,16 @@ class Salles
         $this->prix = $prix;
 
         return $this;
+    }
+    public function setClient(Client $client)
+    {
+      $this->client = $client;
+  
+      return $this;
+    }
+  
+    public function getclient()
+    {
+      return $this->client;
     }
 }
