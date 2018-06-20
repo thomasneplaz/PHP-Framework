@@ -5,7 +5,8 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
 
-
+        <link rel="stylesheet" href="{{ asset('style.css') }}">
+        <link rel="stylesheet" href="{{ asset('../assets/AdminBSBMaterialDesign-master/css/style.css') }}">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
@@ -13,7 +14,27 @@
         {% endblock %}
     </head>
     <body>
+      <div class="example-wrapper">
+      <nav id="navbar-example2" class="navbar navbar-light bg-light">
+      <a class="navbar-brand" href="{{path('home_page')}}">Accueil</a>
+      <a class="nav-link" href="">Location de Salle</a>
+      <a class="nav-link" href="">Generer une facture</a>
+      <!-- <a class="navbar-brand" href="">User</a> -->
 
+
+      <ul class="nav nav-pills">
+
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Compte</a>
+      <div class="dropdown-menu">
+      <a class="dropdown-item" href="{{ path('login') }}">Connexion</a>
+      <a class="dropdown-item" href="{{ path('user_new') }}">Inscription</a>
+
+      </li>
+      </ul>
+      </nav>
+
+      </div>
         {% block body %}
 
         {% endblock %}
