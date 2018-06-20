@@ -20,7 +20,7 @@ class ModuleSalleController extends Controller
      */
     public function index(ModuleSalleRepository $moduleSalleRepository): Response
     {
-        return $this->render('module_salle/index.html.twig', ['module_salles' => $moduleSalleRepository->findAll()]);
+        return $this->render('module_salle/index.html.twig', ['module_salle' => $moduleSalleRepository->findAll()]);
     }
 
     /**
