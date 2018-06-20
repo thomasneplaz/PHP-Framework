@@ -31,7 +31,7 @@ class ModuleLocation
         return $this->id;
     }
 
-    public function getIdModule(): ?int
+    public function getIdModule()
     {
         return $this->idModule;
     }
@@ -43,7 +43,7 @@ class ModuleLocation
         return $this;
     }
 
-    public function getIdLocation(): ?int
+    public function getIdLocation()
     {
         return $this->idLocation;
     }
