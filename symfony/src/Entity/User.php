@@ -1,10 +1,7 @@
 <?php
-
 namespace App\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
-
 /**
  *@ORM\Table(name="app_users")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -19,7 +16,7 @@ class User implements UserInterface, \Serializable
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=25, unique=true)
+     * @ORM\Column(type="string", length=25)
      */
     private $username;
 
@@ -75,7 +72,6 @@ class User implements UserInterface, \Serializable
     public function setUsername(string $username): self
     {
         $this->username = $username;
-
         return $this;
     }
 
@@ -87,7 +83,6 @@ class User implements UserInterface, \Serializable
     public function setPassword(string $password): self
     {
         $this->password = $password;
-
         return $this;
     }
 
@@ -99,7 +94,6 @@ class User implements UserInterface, \Serializable
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
-
         return $this;
     }
 
@@ -111,21 +105,20 @@ class User implements UserInterface, \Serializable
     public function setPrenom(string $prenom): self
     {
         $this->prenom = $prenom;
-
         return $this;
     }
 
     public function getRoles()
     {
-        return $this->roles;
+        return array('ROLE_USER');
     }
 
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
-
         return $this;
     }
+
     public function getIsActive()
     {
         return $this->isActive;
@@ -134,13 +127,13 @@ class User implements UserInterface, \Serializable
     public function setIsActive(bool $isActive): self
     {
         $this->isActive = $isActive;
-
         return $this;
     }
 
     public function eraseCredentials()
     {
     }
+
     /** @see \Serializable::serialize() */
     public function serialize()
     {
