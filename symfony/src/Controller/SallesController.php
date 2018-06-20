@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Salles;
+use App\Entity\User;
 use App\Form\SallesType;
 use App\Repository\SallesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -10,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * @Route("/salles")
@@ -25,6 +27,7 @@ class SallesController extends Controller
     }
 
     /**
+     * @Security("has_role('ROLE_USER')")
      * @Route("/new", name="salles_new", methods="GET|POST")
      */
     public function new(Request $request): Response
@@ -54,12 +57,16 @@ class SallesController extends Controller
     /**
      * @Route("/{id}", name="salles_show", methods="GET")
      */
-    public function show(Salles $salle): Response
+    public function show(User $id): Response
     {
-        return $this->render('salles/show.html.twig', ['salle' => $salle]);
+        $em = $this->getDoctrine()->getManager();
+        $salle = $em->getRepository(Salles::class)->findBy(['client'=> $id]);
+
+        return $this->render('salles/show.html.twig', ['salles' => $salle]);
     }
 
     /**
+     * @Security("has_role('ROLE_USER')")
      * @Route("/{id}/edit", name="salles_edit", methods="GET|POST")
      */
     public function edit(Request $request, Salles $salle): Response
@@ -84,6 +91,7 @@ class SallesController extends Controller
     }
 
     /**
+     * @Security("has_role('ROLE_USER')")
      * @Route("/{id}", name="salles_delete", methods="DELETE")
      */
     public function delete(Request $request, Salles $salle): Response

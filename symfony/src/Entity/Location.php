@@ -31,7 +31,7 @@ class Location
         return $this->id;
     }
 
-    public function getDateDeb(): ?\DateTimeInterface
+    public function getDateDeb()
     {
         return $this->dateDeb;
     }
@@ -43,7 +43,7 @@ class Location
         return $this;
     }
 
-    public function getDateFin(): ?\DateTimeInterface
+    public function getDateFin()
     {
         return $this->dateFin;
     }

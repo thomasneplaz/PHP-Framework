@@ -3,24 +3,29 @@
 {% block title %}Salles{% endblock %}
 
 {% block body %}
-    <h1>Salles</h1>
+    <h1>Liste des salles de l'utilisateur {{app.user.username}}</h1>
 
     <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ salle.id }}</td>
-            </tr>
-            <tr>
                 <th>Nom</th>
-                <td>{{ salle.nom }}</td>
+                <th>Action</th>
             </tr>
+            {% for salle in salles %}
+                <tr>
+                    <td>{{ salle.id }}</td>
+                    <td>{{ salle.nom }}</td>
+                    <td><a href="{{ path('salles_edit', {'id': salle.id}) }}"><button class="btn btn-primary">edit</button></a></td>
+                    <td>{{ include('salles/_delete_form.html.twig') }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">no records found</td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('salles_index') }}">back to list</a>
-
-    <a href="{{ path('salles_edit', {'id': salle.id}) }}">edit</a>
-
-    {{ include('salles/_delete_form.html.twig') }}
+    <a href="{{ path('salles_new') }}"><button class='btn btn-primary'>Ajouter une salle</button></a>
 {% endblock %}

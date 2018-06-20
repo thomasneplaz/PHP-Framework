@@ -13,25 +13,36 @@
     </head>
     <body>
       <div class="example-wrapper">
-          <nav id="navbar-example2" class="navbar navbar-light bg-light">
-              <a class="navbar-brand" href="{{path('home_page')}}">Accueil</a>
-              <a class="nav-link" href="">Location de Salle</a>
-              <a class="nav-link" href="">Generer une facture</a>
-              <!-- <a class="navbar-brand" href="">User</a> -->
 
-
-              <ul class="nav nav-pills">
-
-                  <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Compte</a>
-                      <div class="dropdown-menu">
-                          <a class="dropdown-item" href="{{ path('login') }}">Connexion</a>
-                          <a class="dropdown-item" href="{{ path('user_new') }}">Inscription</a>
-                      </div>
-                  </li>
-              </ul>
-          </nav>
-
+        <nav id="navbar-example2" class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href="{{path('home_page')}}">Accueil</a>
+            <a class="nav-link" href="{{path('salles_index')}}">Location de Salle</a>
+            <a class="nav-link" href="">Generer une facture</a>
+            <!-- <a class="navbar-brand" href="">User</a> -->
+            {% if is_granted('ROLE_USER') %}
+                <ul class="nav nav-pills">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{app.user.username}}</a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="{{ path('user_show', {'id': app.user.id}) }}">Mon profile</a>
+                            <a class="dropdown-item" href="{{ path('salles_show', {'id' : app.user.id}) }}">Mes salles</a>
+                            <a class="dropdown-item" href="{{ path('user_new') }}">Mes locations</a>
+                            <a class="dropdown-item" href="{{ path('logout') }}">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            {% else %}
+                <ul class="nav nav-pills">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Compte</a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="{{ path('login') }}">Connexion</a>
+                            <a class="dropdown-item" href="{{ path('user_new') }}">Inscription</a>
+                        </div>
+                    </li>
+                </ul>
+            {% endif %}
+        </nav>
       </div>
         {% block body %}
 
