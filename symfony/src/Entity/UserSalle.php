@@ -31,7 +31,7 @@ class UserSalle
         return $this->id;
     }
 
-    public function getIdUser(): ?int
+    public function getIdUser()
     {
         return $this->idUser;
     }
@@ -43,7 +43,7 @@ class UserSalle
         return $this;
     }
 
-    public function getIdSalle(): ?int
+    public function getIdSalle()
     {
         return $this->idSalle;
     }

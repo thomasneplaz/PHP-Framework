@@ -31,7 +31,7 @@ class ModuleSalle
         return $this->id;
     }
 
-    public function getIdSalle(): ?int
+    public function getIdSalle()
     {
         return $this->idSalle;
     }
@@ -43,7 +43,7 @@ class ModuleSalle
         return $this;
     }
 
-    public function getIdModule(): ?int
+    public function getIdModule()
     {
         return $this->idModule;
     }
