@@ -12,6 +12,14 @@
                 <td>{{ user.id }}</td>
             </tr>
             <tr>
+                <th>Username</th>
+                <td>{{ user.username }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ user.password }}</td>
+            </tr>
+            <tr>
                 <th>Nom</th>
                 <td>{{ user.nom }}</td>
             </tr>
@@ -20,8 +28,12 @@
                 <td>{{ user.prenom }}</td>
             </tr>
             <tr>
-                <th>Role</th>
-                <td>{{ user.role }}</td>
+                <th>Roles</th>
+                <td>{{ user.roles ? user.roles|join(', ') : '' }}</td>
+            </tr>
+            <tr>
+                <th>IsActive</th>
+                <td>{{ user.isActive ? 'Yes' : 'No' }}</td>
             </tr>
         </tbody>
     </table>
