@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ModuleLocation{% endblock %}
+
+{% block body %}
+    <h1>ModuleLocation</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ module_location.id }}</td>
+            </tr>
+            <tr>
+                <th>IdModule</th>
+                <td>{{ module_location.idModule }}</td>
+            </tr>
+            <tr>
+                <th>IdLocation</th>
+                <td>{{ module_location.idLocation }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('module_location_index') }}">back to list</a>
+
+    <a href="{{ path('module_location_edit', {'id': module_location.id}) }}">edit</a>
+
+    {{ include('module_location/_delete_form.html.twig') }}
+{% endblock %}

@@ -5,22 +5,22 @@
 {% block body %}
     <h1>Module index</h1>
 
-    <table class="table ">
+    <table class="table">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Libellé</th>
-                <th>Prix</th>
-                <th>actions</th>
+            <tr class="">
+                <th class="">Id</th>
+                <th class="">Libellé</th>
+                <th class="">Prix</th>
+                <th class="">actions</th>
             </tr>
         </thead>
         <tbody>
         {% for module in modules %}
-            <tr>
-                <td >{{ module.idModule }}</td>
-                <td >{{ module.libelleModule }}</td>
-                <td >{{ module.prixModule }} €</td>
-                <td >
+            <tr class="">
+                <td class="">{{ module.idModule }}</td>
+                <td class="">{{ module.libelleModule }}</td>
+                <td class="">{{ module.prixModule }} €</td>
+                <td class="">
                     <div>
                         <a href="{{ path('module_show', {'idModule': module.idModule}) }}">Détails</a><br>
                         <a href="{{ path('module_edit', {'idModule': module.idModule}) }}">Editer</a>
@@ -35,5 +35,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('module_new') }}">Ajouter</a>
+    <a href="{{ path('module_new') }}" class="button-a">Ajouter</a>
 {% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ModuleLocation index{% endblock %}
+
+{% block body %}
+    <h1>ModuleLocation index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>IdModule</th>
+                <th>IdLocation</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for module_location in module_locations %}
+            <tr>
+                <td>{{ module_location.id }}</td>
+                <td>{{ module_location.idModule }}</td>
+                <td>{{ module_location.idLocation }}</td>
+                <td>
+                    <a href="{{ path('module_location_show', {'id': module_location.id}) }}">show</a>
+                    <a href="{{ path('module_location_edit', {'id': module_location.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('module_location_new') }}">Create new</a>
+{% endblock %}
