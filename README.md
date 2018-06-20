@@ -1,3 +1,2 @@
 # PHP-Framework
-student project on synfony
-cOUCOU
+I <3 Richard Stallman !
