@@ -1,6 +1,5 @@
 
 ###> symfony/framework-bundle ###
-/.env.dist
 /.env
 /public/bundles/
 /var/
