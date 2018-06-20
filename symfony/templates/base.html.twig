@@ -9,16 +9,14 @@
         <link rel="stylesheet" href="{{ asset('../assets/AdminBSBMaterialDesign-master/css/style.css') }}">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-
-
         {% endblock %}
     </head>
     <body>
       <div class="example-wrapper">
         <nav id="navbar-example2" class="navbar navbar-light bg-light">
-            <a class="navbar-brand" href="{{path('home_page')}}">Accueil</a>
-            <a class="nav-link" href="{{path('salles_index')}}">Location de Salle</a>
-            <a class="nav-link" href="">Generer une facture</a>
+            <a class="nav-link" href="{{path('home_page')}}">Accueil</a>
+            <a class="nav-link" href="{{path('salles_index')}}">Liste des Salles</a>
+
             <!-- <a class="navbar-brand" href="">User</a> -->
             {% if is_granted('ROLE_USER') %}
                 <ul class="nav nav-pills">
@@ -27,7 +25,7 @@
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="{{ path('user_show', {'id': app.user.id}) }}">Mon profile</a>
                             <a class="dropdown-item" href="{{ path('salles_show', {'id' : app.user.id}) }}">Mes salles</a>
-                            <a class="dropdown-item" href="{{ path('user_new') }}">Mes locations</a>
+                            <a class="dropdown-item" href="{{ path('location_show', {'id' : app.user.id})}}">Mes locations</a>
                             <a class="dropdown-item" href="{{ path('logout') }}">Logout</a>
                         </div>
                     </li>

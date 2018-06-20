@@ -49,7 +49,7 @@ class UserController extends Controller
     }
 
     /**
-     * @Security("has_role('ROLE_ADMIN')")
+     * @Security("has_role('ROLE_USER')")
      * @Route("/{id}", name="user_show", methods="GET")
      */
     public function show(User $user): Response
