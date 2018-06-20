@@ -40,7 +40,7 @@ class Module
         return $this;
     }
 
-    public function getLibelleModule(): ?string
+    public function getLibelleModule()
     {
         return $this->libelleModule;
     }
@@ -52,7 +52,7 @@ class Module
         return $this;
     }
 
-    public function getPrixModule(): ?float
+    public function getPrixModule()
     {
         return $this->prixModule;
     }
