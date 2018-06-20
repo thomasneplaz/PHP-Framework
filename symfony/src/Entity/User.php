@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Table(name="app_users")
+ *@ORM\Table(name="app_users")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
 class User implements UserInterface, \Serializable
@@ -19,6 +19,16 @@ class User implements UserInterface, \Serializable
     private $id;
 
     /**
+     * @ORM\Column(type="string", length=25)
+     */
+    private $username;
+
+    /**
+     * @ORM\Column(type="string", length=64)
+     */
+    private $password;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $nom;
@@ -27,35 +37,58 @@ class User implements UserInterface, \Serializable
      * @ORM\Column(type="string", length=255)
      */
     private $prenom;
-    /**
-     * @ORM\Column(type="string", length=255, unique=true)
-     */
-    private $username;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $password;
     /**
      * @ORM\Column(type="array")
      */
-    private $roles= array();
+    private $roles;
 
     /**
-     * @ORM\Column(name="is_active", type="boolean")
+     * @ORM\Column(type="boolean")
      */
     private $isActive;
+
     public function __construct()
     {
-        $this->isActive = true;
-        // may not be needed, see section on salt below
-        // $this->salt = md5(uniqid('', true));
-    }
-
+       $this->isActive = true;
+       // may not be needed, see section on salt below
+       // $this->salt = md5(uniqid('', true));
+     }
 
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    public function getSalt()
+    {
+       // you *may* need a real salt depending on your encoder
+       // see section on salt below
+       return null;
+    }
+
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
     }
 
     public function getNom()
@@ -81,43 +114,32 @@ class User implements UserInterface, \Serializable
 
         return $this;
     }
-    public function getUsername()
-    {
-        return $this->username;
-    }
-    public function getPassword()
-    {
-        return $this->password;
-    }
 
-
-    /**
-     * Retourne les rôles de l'user
-     */
     public function getRoles()
     {
         return array('ROLE_USER');
     }
 
-
-    public function getSalt()
+    public function setRoles(array $roles): self
     {
-        // See "Do you need to use a Salt?" at https://symfony.com/doc/current/cookbook/security/entity_provider.html
-        // we're using bcrypt in security.yml to encode the password, so
-        // the salt value is built-in and you don't have to generate one
+        $this->roles = $roles;
 
-        return null;
+        return $this;
     }
-    /**
-     * Removes sensitive data from the user.
-     *
-     * {@inheritdoc}
-     */
-    public function eraseCredentials(): void
+    public function getIsActive()
     {
-        // Nous n'avons pas besoin de cette methode car nous n'utilions pas de plainPassword
-        // Mais elle est obligatoire car comprise dans l'interface UserInterface
-        // $this->plainPassword = null;
+        return $this->isActive;
+    }
+
+    public function setIsActive(bool $isActive): self
+    {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    public function eraseCredentials()
+    {
     }
     /** @see \Serializable::serialize() */
     public function serialize()
@@ -142,5 +164,4 @@ class User implements UserInterface, \Serializable
             // $this->salt
         ) = unserialize($serialized, ['allowed_classes' => false]);
     }
-
 }
