@@ -137,6 +137,49 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'module_delete')), array (  '_controller' => 'App\\Controller\\ModuleController::delete',));
             }
 
+            if (0 === strpos($pathinfo, '/module/salle')) {
+                // module_salle
+                if ('/module/salle' === $pathinfo) {
+                    return array (  '_controller' => 'App\\Controller\\ModuleSalleController',  '_route' => 'module_salle',);
+                }
+
+                // module_salle_index
+                if ('/module/salle' === $trimmedPathinfo) {
+                    $ret = array (  '_controller' => 'App\\Controller\\ModuleSalleController::index',  '_route' => 'module_salle_index',);
+                    if ('/' === substr($pathinfo, -1)) {
+                        // no-op
+                    } elseif ('GET' !== $canonicalMethod) {
+                        goto not_module_salle_index;
+                    } else {
+                        return array_replace($ret, $this->redirect($rawPathinfo.'/', 'module_salle_index'));
+                    }
+
+                    return $ret;
+                }
+                not_module_salle_index:
+
+                // module_salle_new
+                if ('/module/salle/new' === $pathinfo) {
+                    return array (  '_controller' => 'App\\Controller\\ModuleSalleController::new',  '_route' => 'module_salle_new',);
+                }
+
+                // module_salle_show
+                if (preg_match('#^/module/salle/(?P<idModule>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'module_salle_show')), array (  '_controller' => 'App\\Controller\\ModuleSalleController::show',));
+                }
+
+                // module_salle_edit
+                if (preg_match('#^/module/salle/(?P<idModule>[^/]++)/edit$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'module_salle_edit')), array (  '_controller' => 'App\\Controller\\ModuleSalleController::edit',));
+                }
+
+                // module_salle_delete
+                if (preg_match('#^/module/salle/(?P<idModule>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'module_salle_delete')), array (  '_controller' => 'App\\Controller\\ModuleSalleController::delete',));
+                }
+
+            }
+
         }
 
         elseif (0 === strpos($pathinfo, '/user')) {

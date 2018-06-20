@@ -2,6 +2,7 @@ home_page:
     path: /
     defaults:
       _controller: 'App\Controller\AppController::index'
+
 module:
     path: /module
     defaults: {_controller: 'App\Controller\ModuleController'}
@@ -20,3 +21,23 @@ module_edit:
 module_delete:
     path: /module/{idModule}
     defaults: {_controller: 'App\Controller\ModuleController::delete'}
+
+
+module_salle:
+    path: /module/salle
+    defaults: {_controller: 'App\Controller\ModuleSalleController'}
+module_salle_index:
+    path: /module/salle/
+    defaults: {_controller: 'App\Controller\ModuleSalleController::index'}
+module_salle_new:
+    path: /module/salle/new
+    defaults: {_controller: 'App\Controller\ModuleSalleController::new'}
+module_salle_show:
+    path: /module/salle/{idModule}
+    defaults: {_controller: 'App\Controller\ModuleSalleController::show'}
+module_salle_edit:
+    path: /module/salle/{idModule}/edit
+    defaults: {_controller: 'App\Controller\ModuleSalleController::edit'}
+module_salle_delete:
+    path: /module/salle/{idModule}
+    defaults: {_controller: 'App\Controller\ModuleSalleController::delete'}

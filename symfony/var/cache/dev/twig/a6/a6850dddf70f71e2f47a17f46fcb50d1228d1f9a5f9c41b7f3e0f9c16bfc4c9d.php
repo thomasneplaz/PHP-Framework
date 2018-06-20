@@ -71,13 +71,13 @@ class __TwigTemplate_fc4f1f17314f02472bd3b5afcddeea5cac8c86a3696572a5c6cecc98b24
         // line 6
         echo "    <h1>Module index</h1>
 
-    <table class=\"table \">
+    <table class=\"table\">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Libellé</th>
-                <th>Prix</th>
-                <th>actions</th>
+            <tr class=\"\">
+                <th class=\"\">Id</th>
+                <th class=\"\">Libellé</th>
+                <th class=\"\">Prix</th>
+                <th class=\"\">actions</th>
             </tr>
         </thead>
         <tbody>
@@ -88,20 +88,20 @@ class __TwigTemplate_fc4f1f17314f02472bd3b5afcddeea5cac8c86a3696572a5c6cecc98b24
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["module"]) {
             // line 19
-            echo "            <tr>
-                <td >";
+            echo "            <tr class=\"\">
+                <td class=\"\">";
             // line 20
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["module"], "idModule", array()), "html", null, true);
             echo "</td>
-                <td >";
+                <td class=\"\">";
             // line 21
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["module"], "libelleModule", array()), "html", null, true);
             echo "</td>
-                <td >";
+                <td class=\"\">";
             // line 22
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["module"], "prixModule", array()), "html", null, true);
             echo " €</td>
-                <td >
+                <td class=\"\">
                     <div>
                         <a href=\"";
             // line 25
@@ -134,7 +134,7 @@ class __TwigTemplate_fc4f1f17314f02472bd3b5afcddeea5cac8c86a3696572a5c6cecc98b24
     <a href=\"";
         // line 38
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("module_new");
-        echo "\">Ajouter</a>
+        echo "\" class=\"button-a\">Ajouter</a>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -168,22 +168,22 @@ class __TwigTemplate_fc4f1f17314f02472bd3b5afcddeea5cac8c86a3696572a5c6cecc98b24
 {% block body %}
     <h1>Module index</h1>
 
-    <table class=\"table \">
+    <table class=\"table\">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Libellé</th>
-                <th>Prix</th>
-                <th>actions</th>
+            <tr class=\"\">
+                <th class=\"\">Id</th>
+                <th class=\"\">Libellé</th>
+                <th class=\"\">Prix</th>
+                <th class=\"\">actions</th>
             </tr>
         </thead>
         <tbody>
         {% for module in modules %}
-            <tr>
-                <td >{{ module.idModule }}</td>
-                <td >{{ module.libelleModule }}</td>
-                <td >{{ module.prixModule }} €</td>
-                <td >
+            <tr class=\"\">
+                <td class=\"\">{{ module.idModule }}</td>
+                <td class=\"\">{{ module.libelleModule }}</td>
+                <td class=\"\">{{ module.prixModule }} €</td>
+                <td class=\"\">
                     <div>
                         <a href=\"{{ path('module_show', {'idModule': module.idModule}) }}\">Détails</a><br>
                         <a href=\"{{ path('module_edit', {'idModule': module.idModule}) }}\">Editer</a>
@@ -198,7 +198,7 @@ class __TwigTemplate_fc4f1f17314f02472bd3b5afcddeea5cac8c86a3696572a5c6cecc98b24
         </tbody>
     </table>
 
-    <a href=\"{{ path('module_new') }}\">Ajouter</a>
+    <a href=\"{{ path('module_new') }}\" class=\"button-a\">Ajouter</a>
 {% endblock %}
 ", "module/index.html.twig", "/var/www/html/PHP-Framework/symfony/templates/module/index.html.twig");
     }
