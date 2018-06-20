@@ -16,11 +16,11 @@ location_new:
     defaults: 
       _controller: 'App\Controller\LocationController::new'
 location_show:
-    path: /locations/{idModule}
+    path: /locations/{id}
     defaults: 
       _controller: 'App\Controller\LocationController::show'
 location_edit:
-    path: /locations/{idModule}/edit
+    path: /locations/{id}/edit
     defaults: 
       _controller: 'App\Controller\LocationController::edit'
 

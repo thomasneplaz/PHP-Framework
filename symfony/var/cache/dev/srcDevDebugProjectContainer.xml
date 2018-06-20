@@ -527,6 +527,9 @@
     <service id="App\Controller\UserController" class="App\Controller\UserController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
     </service>
+    <service id="App\Form\Location1Type" class="App\Form\Location1Type" public="false" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\LocationType" class="App\Form\LocationType" public="false" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
@@ -818,6 +821,7 @@
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
       </argument>
       <argument type="collection">
+        <argument>App\Form\Location1Type</argument>
         <argument>App\Form\LocationType</argument>
         <argument>App\Form\ModuleType</argument>
         <argument>App\Form\UserType</argument>
@@ -1029,7 +1033,7 @@
       <argument type="service" id="form.resolved_type_factory"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id="service_locator.rtjnwe5"/>
+      <argument type="service" id="service_locator.z9jqj6l"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.http_foundation"/>
@@ -4432,6 +4436,8 @@
     <service id="abstract.instanceof.App\Controller\ModuleController" class="App\Controller\ModuleController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.App\Controller\UserController" class="App\Controller\UserController" public="false" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.App\Controller\UserController" class="App\Controller\UserController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\Location1Type" class="App\Form\Location1Type" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Form\Location1Type" class="App\Form\Location1Type" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\LocationType" class="App\Form\LocationType" public="false" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.App\Form\LocationType" class="App\Form\LocationType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ModuleType" class="App\Form\ModuleType" public="false" autowire="true" abstract="true"/>
@@ -4780,9 +4786,10 @@
         <argument key="inline" type="service" id="fragment.renderer.inline"/>
       </argument>
     </service>
-    <service id="service_locator.rtjnwe5" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="service_locator.z9jqj6l" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Form\Location1Type" type="service" id="App\Form\Location1Type"/>
         <argument key="App\Form\LocationType" type="service" id="App\Form\LocationType"/>
         <argument key="App\Form\ModuleType" type="service" id="App\Form\ModuleType"/>
         <argument key="App\Form\UserType" type="service" id="App\Form\UserType"/>

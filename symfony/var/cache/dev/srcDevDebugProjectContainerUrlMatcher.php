@@ -67,12 +67,12 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             }
 
             // location_show
-            if (preg_match('#^/locations/(?P<idModule>[^/]++)$#sD', $pathinfo, $matches)) {
+            if (preg_match('#^/locations/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'location_show')), array (  '_controller' => 'App\\Controller\\LocationController::show',));
             }
 
             // location_edit
-            if (preg_match('#^/locations/(?P<idModule>[^/]++)/edit$#sD', $pathinfo, $matches)) {
+            if (preg_match('#^/locations/(?P<id>[^/]++)/edit$#sD', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'location_edit')), array (  '_controller' => 'App\\Controller\\LocationController::edit',));
             }
 
@@ -149,7 +149,7 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
             // module
             if ('/module' === $pathinfo) {
-                return array (  '_controller' => 'App\\Controller\\ModuleController',  '_route' => 'module',);
+                return array (  '_controller' => 'App\\Controller\\ModuleController::index',  '_route' => 'module',);
             }
 
             // module_index
