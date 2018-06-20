@@ -1,2 +1,2 @@
 # PHP-Framework
-I <3 Richard Stallman !
+Symfony framework, student week work project
