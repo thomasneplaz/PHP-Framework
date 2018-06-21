@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * @Route("/location")
@@ -20,6 +21,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class LocationController extends Controller
 {
     /**
+     * @Security("has_role('ROLE_ADMIN')")
      * @Route("/", name="location_index", methods="GET")
      */
     public function index(LocationRepository $locationRepository): Response
@@ -28,6 +30,7 @@ class LocationController extends Controller
     }
 
     /**
+     * @Security("has_role('ROLE_USER')")
      * @Route("/new/{id}", name="location_new", methods="GET|POST")
      */
     public function new(Request $request, Salles $id): Response
@@ -47,7 +50,8 @@ class LocationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getFlashBag()->add('save','Salles réservé');
+            $this->addFlash('save','Salles réservé');
+
             $em->persist($location);
             $em->flush();
 
@@ -62,6 +66,7 @@ class LocationController extends Controller
     }
 
     /**
+     * @Security("has_role('ROLE_USER')")
      * @Route("/{id}", name="location_show", methods="GET")
      */
     public function show(User $id): Response
@@ -74,6 +79,7 @@ class LocationController extends Controller
     }
 
     /**
+     * @Security("has_role('ROLE_USER')")
      * @Route("/{id}/edit", name="location_edit", methods="GET|POST")
      */
     public function edit(Request $request, Location $location): Response
@@ -86,6 +92,7 @@ class LocationController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('save','Réservation Modifiée');
 
             return $this->redirectToRoute('location_show', ['id' => $this->get('security.token_storage')->getToken()->getUser()->getId()]);
         }
@@ -97,6 +104,7 @@ class LocationController extends Controller
     }
 
     /**
+     * @Security("has_role('ROLE_USER')")
      * @Route("/{id}", name="location_delete", methods="DELETE")
      */
     public function delete(Request $request, Location $location): Response
@@ -105,6 +113,8 @@ class LocationController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($location);
             $em->flush();
+
+            $this->addFlash('save','Réservation supprimé');
         }
 
         return $this->redirectToRoute('location_show', [ 'id' => $this->get('security.token_storage')->getToken()->getUser()->getId()]);

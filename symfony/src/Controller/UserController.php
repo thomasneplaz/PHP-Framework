@@ -18,6 +18,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class UserController extends Controller
 {
     /**
+     * @Security("has_role('ROLE_ADMIN')")
      * @Route("/", name="user_index", methods="GET")
      */
     public function index(UserRepository $userRepository): Response
@@ -39,6 +40,8 @@ class UserController extends Controller
             $em->persist($user);
             $em->flush();
 
+            $this->addFlash('save','Nouvel utilisateur créé');
+
             return $this->redirectToRoute('salles_index');
         }
 
@@ -58,6 +61,7 @@ class UserController extends Controller
     }
 
     /**
+     * @Security("has_role('ROLE_USER')")
      * @Route("/{id}/edit", name="user_edit", methods="GET|POST")
      */
     public function edit(Request $request, User $user): Response
@@ -67,6 +71,8 @@ class UserController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('save','Modification du compte enregistré');
 
             return $this->redirectToRoute('user_edit', ['id' => $user->getId()]);
         }
@@ -78,6 +84,7 @@ class UserController extends Controller
     }
 
     /**
+     * @Security("has_role('ROLE_ADMIN')")
      * @Route("/{id}", name="user_delete", methods="DELETE")
      */
     public function delete(Request $request, User $user): Response
@@ -86,6 +93,8 @@ class UserController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($user);
             $em->flush();
+
+            $this->addFlash('save','Suppression de l\'utilisateur effectué');
         }
 
         return $this->redirectToRoute('user_index');

@@ -46,6 +46,7 @@ class SallesController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($salle);
             $em->flush();
+            $this->addFlash('save','Création de la salle effectuée');
 
             return $this->redirectToRoute('salles_index');
         }
@@ -57,6 +58,7 @@ class SallesController extends Controller
     }
 
     /**
+     * @Security("has_role('ROLE_USER')")
      * @Route("/{id}", name="salles_show", methods="GET")
      */
     public function show(User $id): Response
@@ -82,6 +84,7 @@ class SallesController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('save','Modification de la salle effectuée');
 
             return $this->redirectToRoute('salles_show', ['id' => $this->get('security.token_storage')->getToken()->getUser()->getId()]);
         }
@@ -102,6 +105,8 @@ class SallesController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($salle);
             $em->flush();
+
+            $this->addFlash('save','La salle a été supprimée');
         }
 
         return $this->redirectToRoute('salles_index');
