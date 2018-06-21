@@ -34,7 +34,7 @@ class LocationController extends Controller
     {
         $salle = new Salles();
         $em = $this->getDoctrine()->getManager();
-        
+
         $salle = $em->getRepository(Salles::Class)->find($id);
 
         $location = new Location();
@@ -47,13 +47,13 @@ class LocationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getFlasBag()->add('save','Salles réservé');
+            $this->getFlashBag()->add('save','Salles réservé');
             $em->persist($location);
             $em->flush();
 
             return $this->redirectToRoute('salles_index');
         }
-        
+
         return $this->render('location/new.html.twig', [
             'location' => $location,
             'salle' => $salle,
