@@ -20,7 +20,7 @@ class Version20180620094111 extends AbstractMigration
         //
         // $this->addSql('CREATE TABLE app_users (id INT AUTO_INCREMENT NOT NULL, username VARCHAR(25) NOT NULL, password VARCHAR(64) NOT NULL, nom VARCHAR(255) NOT NULL, prenom VARCHAR(255) NOT NULL, roles LONGTEXT NOT NULL COMMENT \'(DC2Type:array)\', is_active TINYINT(1) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         // $this->addSql('DROP TABLE user');
-        // $this->addSql('ALTER TABLE salles ADD adress VARCHAR(255) NOT NULL, ADD prix INT NOT NULL');
+         $this->addSql('ALTER TABLE salles ADD adress VARCHAR(255) NOT NULL, ADD prix INT NOT NULL');
     }
 
     /**
@@ -33,6 +33,6 @@ class Version20180620094111 extends AbstractMigration
         //
         // $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, username VARCHAR(25) NOT NULL COLLATE utf8mb4_unicode_ci, password VARCHAR(64) NOT NULL COLLATE utf8mb4_unicode_ci, nom VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci, prenom VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci, roles LONGTEXT NOT NULL COLLATE utf8mb4_unicode_ci COMMENT \'(DC2Type:array)\', is_active TINYINT(1) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
         // $this->addSql('DROP TABLE app_users');
-        // $this->addSql('ALTER TABLE salles DROP adress, DROP prix');
+         $this->addSql('ALTER TABLE salles DROP adress, DROP prix');
     }
 }
