@@ -29,3 +29,4 @@ Nous avons également subit quelques problèmes matériels, soit une machine qui
 ## Nos décisions
 
 Il nous a donc été nécessaire de décider de ne pas tout produire afin de pouvoir tout de même fournir un projet qui soit fonctionnel. Ainsi, le développement de l'export des factures à été laissé de côté afin que nous puissions nous concentrer sur la fonctionnalité principale de réservation d'une salle.
+Nous avions aussi ajouté des tables de correspondance pour lier certaines tables entre elles. Ils ne sont plus utile car doctrine se charge de cela pour nous.
