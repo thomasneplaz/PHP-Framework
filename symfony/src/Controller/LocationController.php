@@ -50,7 +50,7 @@ class LocationController extends Controller
             $em->persist($location);
             $em->flush();
 
-            return $this->redirectToRoute('location_index');
+            return $this->redirectToRoute('salles_index');
         }
 
         return $this->render('location/new.html.twig', [
@@ -86,7 +86,7 @@ class LocationController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('location_edit', ['id' => $location->getId()]);
+            return $this->redirectToRoute('location_show', ['id' => $this->get('security.token_storage')->getToken()->getUser()->getId()]);
         }
 
         return $this->render('location/edit.html.twig', [
@@ -106,6 +106,6 @@ class LocationController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('location_index');
+        return $this->redirectToRoute('location_show', [ 'id' => $this->get('security.token_storage')->getToken()->getUser()->getId()]);
     }
 }

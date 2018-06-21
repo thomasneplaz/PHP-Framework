@@ -9,15 +9,18 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
                 <th>Nom</th>
-                <th>Action</th>
+                <th>Adresse</th>
+                <th>Prix</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
             </tr>
             {% for salle in salles %}
                 <tr>
-                    <td>{{ salle.id }}</td>
                     <td>{{ salle.nom }}</td>
-                    <td><a href="{{ path('salles_edit', {'id': salle.id}) }}"><button class="btn btn-primary">edit</button></a></td>
+                    <td>{{ salle.adress }}</td>
+                    <td>{{ salle.prix }}</td>
+                    <td><a href="{{ path('salles_edit', {'id': salle.id}) }}"><button class="btn btn-primary">Modifier</button></a></td>
                     <td>{{ include('salles/_delete_form.html.twig') }}</td>
                 </tr>
             {% else %}
