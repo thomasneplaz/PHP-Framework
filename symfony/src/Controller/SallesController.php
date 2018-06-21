@@ -105,4 +105,5 @@ class SallesController extends Controller
 
         return $this->redirectToRoute('salles_index');
     }
+
 }

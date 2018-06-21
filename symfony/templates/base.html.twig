@@ -58,6 +58,9 @@
             {% endif %}
         </nav>
       </div>
+      {% for message in app.session.flashbag.get('save') %}
+          <div class="alert alert-success">Succès : {{ message }}</div>
+      {% endfor %}
         {% block body %}
 
         {% endblock %}
