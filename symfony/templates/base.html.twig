@@ -10,12 +10,24 @@
 
         {% endblock %}
     </head>
+    <style media="screen">
+    body {
+      background:
+        url(https://www.campana.vi.it/images/so-simple-sample-image-4.jpg);
+        background-size: cover;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      width: 100vw;
+      font-family: arial;
+      position: relative;
+    }
+    </style>
     <body>
       <div class="example-wrapper">
 
         <nav id="navbar-example2" class="navbar navbar-light bg-light">
             <a class="nav-link" href="{{path('salles_index')}}">Accueil</a>
-            <a class="nav-link btn btn-outline-primary" href="{{path('salles_index')}}">Liste des Salles</a>
+
 
             {% if is_granted('ROLE_ADMIN') %}
                 <ul class="nav nav-pills">
