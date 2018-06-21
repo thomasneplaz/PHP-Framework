@@ -20,7 +20,7 @@ security:
                 check_path: login
             logout:
               path: /logout
-              target: /
+              target: /salles
 
     access_control:
           # { path: ^/admin/user_show, roles: ROLE_ADMIN }
