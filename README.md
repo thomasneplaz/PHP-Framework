@@ -3,7 +3,7 @@
 ## Membres : 
   - Bilel Rehahla
   - Thomas Neplaz
-  - Cédric
+  - Cédric Crochet
   - Geoffroy Luchez
   
 ## Le Framework
@@ -30,3 +30,25 @@ Nous avons également subit quelques problèmes matériels, soit une machine qui
 
 Il nous a donc été nécessaire de décider de ne pas tout produire afin de pouvoir tout de même fournir un projet qui soit fonctionnel. Ainsi, le développement de l'export des factures à été laissé de côté afin que nous puissions nous concentrer sur la fonctionnalité principale de réservation d'une salle.
 Nous avions aussi ajouté des tables de correspondance pour lier certaines tables entre elles. Ils ne sont plus utile car doctrine se charge de cela pour nous.
+
+## Assignation des tâches
+
+https://trello.com/b/eOe9PrY2/php-framework
+
+## Requis
+
+### php 7.1
+`apt-get purge 'php7*'
+sudo add-apt-repository ppa:ondrej/php
+sudo apt-get update
+sudo apt install --no-install-recommends php7.1 libapache2-mod-php7.1 php7.1-mysql php7.1-curl php7.1-json php7.1-gd php7.1-mcrypt php7.1-msgpack php7.1-memcached php7.1-intl php7.1-sqlite3 php7.1-gmp php7.1-geoip php7.1-mbstring php7.1-redis php7.1-xml php7.1-zip
+sudo add-apt-repository ppa:ondrej/php
+sudo apt-get update`
+
+### apache2
+
+`sudo apt-get install apache2`
+
+
+
+
