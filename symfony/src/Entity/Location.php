@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Salles;
+use App\Entity\User;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\LocationRepository")
@@ -25,6 +27,18 @@ class Location
      * @ORM\Column(type="date")
      */
     private $dateFin;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Salles", inversedBy="id")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $salle;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="id")
+     * @ORM\joinColumn(nullable=false)
+     */
+    private $client;
 
     public function getId()
     {
@@ -53,5 +67,29 @@ class Location
         $this->dateFin = $dateFin;
 
         return $this;
+    }
+
+    public function setSalle(Salles $salle)
+    {
+      $this->salle = $salle;
+  
+      return $this;
+    }
+  
+    public function getSalle()
+    {
+      return $this->salle;
+    }
+
+    public function setClient(User $client)
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    public function getClient()
+    {
+        return $this->client;
     }
 }

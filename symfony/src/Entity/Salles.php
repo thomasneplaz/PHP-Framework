@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\User;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SallesRepository")
@@ -32,7 +33,7 @@ class Salles
     private $prix;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="id")
      * @ORM\JoinColumn(nullable=false)
      */
     private $client;
@@ -71,20 +72,20 @@ class Salles
         return $this->prix;
     }
 
-    public function setPrix(Integer $prix)
+    public function setPrix($prix)
     {
         $this->prix = $prix;
 
         return $this;
     }
-    public function setClient(Client $client)
+    public function setClient(User $client)
     {
       $this->client = $client;
   
       return $this;
     }
   
-    public function getclient()
+    public function getClient()
     {
       return $this->client;
     }

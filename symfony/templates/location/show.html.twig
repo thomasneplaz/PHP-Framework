@@ -8,23 +8,30 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ location.id }}</td>
-            </tr>
-            <tr>
+                <th>Salle</th>
+                <th>Adresse</th>
+                <th>Prix</th>
                 <th>DateDeb</th>
-                <td>{{ location.dateDeb ? location.dateDeb|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
                 <th>DateFin</th>
-                <td>{{ location.dateFin ? location.dateFin|date('Y-m-d') : '' }}</td>
+                <th>Actions</th>
             </tr>
+            {% for location in locations %}
+                <tr>
+                    <td>{{ location.salle.nom }}</td>
+                    <td>{{ location.salle.adress }}</td>
+                    <td>{{ location.salle.prix }}</td>
+                    <td>{{ location.dateDeb ? location.dateDeb|date('Y-m-d') : '' }}</td>
+                    <td>{{ location.dateFin ? location.dateFin|date('Y-m-d') : '' }}</td>
+                    <td><a href="{{ path('location_edit', {'id': location.id}) }}"><button class="btn btn-primary">Modifier</button></a>
+                    {{ include('location/_delete_form.html.twig') }}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">no records found</td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('location_index') }}">back to list</a>
-
-    <a href="{{ path('location_edit', {'id': location.id}) }}">edit</a>
-
-    {{ include('location/_delete_form.html.twig') }}
 {% endblock %}
