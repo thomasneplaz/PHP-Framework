@@ -6,6 +6,7 @@
         {% block stylesheets %}
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('css/app.css')}}" />
 
         {% endblock %}
     </head>
@@ -13,8 +14,8 @@
       <div class="example-wrapper">
 
         <nav id="navbar-example2" class="navbar navbar-light bg-light">
-            <a class="nav-link" href="{{path('home_page')}}">Accueil</a>
-            <a class="nav-link" href="{{path('salles_index')}}">Liste des Salles</a>
+            <!-- <a class="nav-link" href="{{path('home_page')}}">Accueil</a> -->
+            <a class="nav-link" href="{{path('salles_index')}}">Accueil</a>
 
             <!-- <a class="navbar-brand" href="">User</a> -->
             {% if is_granted('ROLE_USER') %}
