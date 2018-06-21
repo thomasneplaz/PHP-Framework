@@ -37,7 +37,8 @@ class SallesController extends Controller
         $form = $this->createForm(SallesType::class, $salle)
             ->add('save', SubmitType::Class, [
                 'label' => 'Ajouter'
-                ]);
+                ])
+        ;
 
         $form->handleRequest($request);
 
@@ -72,18 +73,18 @@ class SallesController extends Controller
      */
     public function edit(Request $request, Salles $salle): Response
     {
-        $form = $this->createForm(SallesType::class, $salle);
+        $form = $this->createForm(SallesType::class, $salle)
+            ->add('save', SubmitType::Class, [
+                'label' => 'Modifier'
+            ])
+        ;
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('salles_edit', ['id' => $salle->getId()]);
+            return $this->redirectToRoute('salles_show', ['id' => $this->get('security.token_storage')->getToken()->getUser()->getId()]);
         }
-
-        $form->add('save', SubmitType::Class, [
-            'label' => 'Modifier'
-        ]);
 
         return $this->render('salles/edit.html.twig', [
             'salle' => $salle,

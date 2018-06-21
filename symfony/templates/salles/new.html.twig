@@ -7,5 +7,5 @@
 
     {{ include('salles/_form.html.twig') }}
 
-    <a href="{{ path('salles_index') }}">back to list</a>
+    <a href="{{ path('salles_show', {'id': app.user.id}) }}"><button class="btn btn-danger">Annuler</button></a>
 {% endblock %}
