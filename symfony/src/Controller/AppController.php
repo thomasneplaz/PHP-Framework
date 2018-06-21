@@ -12,7 +12,7 @@ class AppController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('app/index.html.twig');
+        return $this->redirectToRoute('salles_index');
     }
     /**
      * @Route("/admin", name="admin")

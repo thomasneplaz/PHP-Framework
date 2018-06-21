@@ -12,12 +12,10 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Nom</th>
-
                 <th>Adresse</th>
                 <th>Prix/jour</th>
-                <th></th>
+                <th>Action</th>
 
             </tr>
         </thead>
@@ -25,9 +23,7 @@
 
         {% for salle in salles %}
             <tr>
-                <td>{{ salle.id }}</td>
                 <td>{{ salle.nom }}</td>
-
                 <td>{{ salle.adress }}</td>
                 <td>{{ salle.prix }} €</td>
                 {% if app.user == salle.client %}
