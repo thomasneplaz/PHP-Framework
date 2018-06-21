@@ -16,6 +16,20 @@
             <a class="nav-link btn btn-outline-primary" href="{{path('home_page')}}">Accueil</a>
             <a class="nav-link btn btn-outline-primary" href="{{path('salles_index')}}">Liste des Salles</a>
 
+            {% if is_granted('ROLE_ADMIN') %}
+                <ul class="nav nav-pills">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle btn btn-outline-primary" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Accès administrateur</a>
+                        <div class="dropdown-menu dropdown-menu-right" style="left: -63%;">
+                            <a class="dropdown-item" href="{{ path('user_index') }}">Utilisateur</a>
+                            <a class="dropdown-item" href="{{ path('location_index') }}">Location</a>
+                            <a class="dropdown-item" href="{{ path('salles_index') }}">Salle</a>
+                            <a class="dropdown-item" href="{{ path('module_index') }}">Module</a>
+                        </div>
+                    </li>
+                </ul>
+            {% endif %}
+
             <!-- <a class="navbar-brand" href="">User</a> -->
             {% if is_granted('ROLE_USER') %}
                 <ul class="nav nav-pills">
