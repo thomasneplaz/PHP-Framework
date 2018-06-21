@@ -2,17 +2,23 @@
 
 {% block title %}Salles index{% endblock %}
 
+
 {% block body %}
-    <h1>Salles index</h1>
+
+<div class= col-md-12 style="text-align: center;">
+<h2>Bienvenue dans notre application de location de salle! </h2>
+</div>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Nom</th>
+
                 <th>Adresse</th>
                 <th>Prix/jour</th>
                 <th></th>
+
             </tr>
         </thead>
         <tbody>
@@ -20,6 +26,7 @@
             <tr>
                 <td>{{ salle.id }}</td>
                 <td>{{ salle.nom }}</td>
+
                 <td>{{ salle.adress }}</td>
                 <td>{{ salle.prix }} €</td>
                 {% if app.user == salle.client %}
@@ -27,12 +34,14 @@
                 {% else %}
                     <td><a href="{{path('location_new', { 'id' : salle.id })}}"><button class="btn btn-success">Réserver</button></a></td>
                 {% endif %}
+
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">Il n'y a aucune salle</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+
 {% endblock %}

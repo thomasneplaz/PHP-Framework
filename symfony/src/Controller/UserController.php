@@ -39,7 +39,7 @@ class UserController extends Controller
             $em->persist($user);
             $em->flush();
 
-            return $this->redirectToRoute('user_index');
+            return $this->redirectToRoute('salles_index');
         }
 
         return $this->render('user/new.html.twig', [
