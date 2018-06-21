@@ -3,7 +3,9 @@
 {% block title %}Edit Location{% endblock %}
 
 {% block body %}
-    <h1>Edit Location</h1>
+    <h1>Réservation de la salle {{ location.salle.nom }}</h1>
+
+    <p>Adresse : {{ location.salle.adress }}</p>
 
     {{ include('location/_form.html.twig', {'button_label': 'Update'}) }}
 

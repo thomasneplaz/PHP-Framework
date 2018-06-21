@@ -33,7 +33,12 @@ class SallesController extends Controller
     public function new(Request $request): Response
     {
         $salle = new Salles();
-        $form = $this->createForm(SallesType::class, $salle);
+        $salle->setClient($this->get('security.token_storage')->getToken()->getUser());
+        $form = $this->createForm(SallesType::class, $salle)
+            ->add('save', SubmitType::Class, [
+                'label' => 'Ajouter'
+                ]);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -43,10 +48,6 @@ class SallesController extends Controller
 
             return $this->redirectToRoute('salles_index');
         }
-
-        $form->add('save', SubmitType::Class, [
-            'label' => 'Ajouter'
-        ]);
 
         return $this->render('salles/new.html.twig', [
             'salle' => $salle,

@@ -10,7 +10,9 @@
             <tr>
                 <th>Id</th>
                 <th>Nom</th>
-                <th>actions</th>
+                <th>Adresse</th>
+                <th>Prix/jour</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -18,10 +20,13 @@
             <tr>
                 <td>{{ salle.id }}</td>
                 <td>{{ salle.nom }}</td>
-                <td>
-                    <a href="{{ path('salles_show', {'id': salle.id}) }}">show</a>
-                    <a href="{{ path('salles_edit', {'id': salle.id}) }}">edit</a>
-                </td>
+                <td>{{ salle.adress }}</td>
+                <td>{{ salle.prix }} €</td>
+                {% if app.user == salle.client %}
+                    <td><button class="btn btn-success disabled">Réserver</button></td>
+                {% else %}
+                    <td><a href="{{path('location_new', { 'id' : salle.id })}}"><button class="btn btn-success">Réserver</button></a></td>
+                {% endif %}
             </tr>
         {% else %}
             <tr>
@@ -30,6 +35,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('salles_new') }}">Create new</a>
 {% endblock %}
