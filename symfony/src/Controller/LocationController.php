@@ -47,12 +47,13 @@ class LocationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->getFlasBag()->add('save','Salles réservé');
             $em->persist($location);
             $em->flush();
 
             return $this->redirectToRoute('location_index');
         }
-
+        
         return $this->render('location/new.html.twig', [
             'location' => $location,
             'salle' => $salle,
