@@ -10,7 +10,7 @@
 
         {% endblock %}
     </head>
-    <style media="screen">
+    <style>
     body {
       background:
         url(https://www.campana.vi.it/images/so-simple-sample-image-4.jpg);
@@ -21,11 +21,248 @@
       font-family: arial;
       position: relative;
     }
+
+    .login-form {
+      background: rgba(0, 0, 0, 0.55);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 40%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      border-radius: 6px;
+      border: none;
+      overflow: hidden;
+    }
+
+    .login-form__top {
+      margin: -20px;
+      background-color: #2196f3;
+      color: #fff;
+      padding: 1rem 2rem 1rem 2rem;
+      text-align: center;
+      margin-bottom: 15px;
+      font-size: 26px;
+      box-sizing: border-box;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+
+    .form-group {
+      position: relative;
+      margin: 15px 0 30px 0;
+    }
+
+    .input {
+      padding: 18px 4px 2px 4px;
+      box-sizing: border-box;
+      width: 100%;
+      color: #fff;
+      font-size: 24px;
+      background: transparent;
+      border: none;
+      position: relative;
+    }
+    .input::placeholder {
+      font-size: 14px;
+    }
+
+    .input__border {
+      content: "";
+      display: block;
+      height: 3px;
+      background: linear-gradient(
+        to right,
+        #2196f3 50%,
+        rgba(255, 255, 255, 0.8) 50%
+      );
+      background-size: 200% 100%;
+      background-position: right bottom;
+      width: 100%;
+      position: absolute;
+      z-index: 1000;
+      transition: all 0.3s ease-in-out;
+      transform-origin: left;
+    }
+
+    input:focus {
+      outline: none;
+    }
+
+    .label {
+      color: #757575;
+      position: absolute;
+      top: 20px;
+      left: 5px;
+      transition: all 0.2s;
+      opacity: 0;
+      font-size: 14px;
+      visibility: hidden;
+    }
+
+    .input:focus ~ .input__border {
+      background-position: left bottom;
+    }
+
+    .input:not(:placeholder-shown) + .label {
+      top: 0;
+      opacity: 1;
+      visibility: visible;
+
+    }
+
+    .input:valid ~ .input__border {
+      background: #28a745 !important;
+    }
+
+    .input:not(:placeholder-shown):invalid ~ .input__border {
+      background: #dc3545 !important;
+
+    }
+
+    .checkbox input{
+      transform:translateY(2.33px);
+    }
+
+    .form-help {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #757575;
+      font-size: 12px;
+      margin-top: -20px;
+      margin-bottom: 16px;
+    }
+
+    .btn {
+      background-color: #2196f3;
+      border: none;
+      width: 100%;
+      padding: 10px 14px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      color: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+      margin: 0 auto;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
+    .btn:hover{
+      background-color: #1383dc;
+    }
+
+    .box {
+      margin-top: 1rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+    }
+    .or {
+      color: rgba(255, 255, 255, 0.8);
+      margin: 6px 0 12px 0;
+      font-size: 14px;E
+    }
+
+    .or::before,
+    .or::after {
+      content: "";
+      display: inline-block;
+      width: 150px;
+      height: 2px;
+      background-color: rgba(255, 255, 255, 0.8);
+      position: relative;
+      transform: translateY(-3px);
+    }
+
+    .or::before {
+      margin-right: 1rem;
+    }
+    .or::after {
+      margin-left: 1rem;
+    }
+
+    .forgot {
+      cursor: pointer;
+      font-style: italic;
+    }
+    .forgot:hover {
+      text-decoration: underline;
+    }
+
+    .oauth {
+      border-raidus: 6px;
+      display: flex;
+      width: 100%;
+      margin: 8px 0;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      text-transform: uppercas
+    }
+
+    .fb {
+      background-color: rgb(72, 104, 173);
+      color: #fff;
+    }
+    .fb:hover{
+        background-color: rgb(59, 90, 158);
+    }
+
+    .google {
+      background-color: rgb(207, 84, 61);
+      color: #fff;
+    }
+    .google:hover{
+        background-color: rgb(185, 70, 49)
+    }
+
+    @media only screen and (max-width:950px){
+      .login-form{
+        width: 60%;
+      }
+      .or::before, .or::after{
+        width: 130px;
+      }
+    }
+
+    @media only screen and (max-width: 568px){
+        .login-form{
+        width: 80%;
+      }
+      .or::before, .or::after{
+        width: 100px;
+      }
+    }
+    @media only screen and (min-width: 1300px){
+      .or::before, .or::after{
+        width: 200px;
+      }
+    }
+    table, tr, th{
+      border-style: hidden;
+      text-align: center;
+    }
+
+    body{
+      color: white;
+    }
+    .navbar{
+      background: lightgrey;
+      border-radius: 10px;
+    }
     </style>
     <body>
       <div class="example-wrapper">
 
-        <nav id="navbar-example2" class="navbar navbar-light bg-light">
+        <nav id="navbar-example2" class="navbar">
             <a class="nav-link" href="{{path('salles_index')}}">Accueil</a>
 
 
