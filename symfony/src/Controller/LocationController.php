@@ -3,12 +3,16 @@
 namespace App\Controller;
 
 use App\Entity\Location;
+use App\Entity\Salles;
+use App\Entity\User;
 use App\Form\LocationType;
 use App\Repository\LocationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * @Route("/location")
@@ -24,16 +28,25 @@ class LocationController extends Controller
     }
 
     /**
-     * @Route("/new", name="location_new", methods="GET|POST")
+     * @Route("/new/{id}", name="location_new", methods="GET|POST")
      */
-    public function new(Request $request): Response
+    public function new(Request $request, Salles $id): Response
     {
+        $salle = new Salles();
+        $em = $this->getDoctrine()->getManager();
+        
+        $salle = $em->getRepository(Salles::Class)->find($id);
+
         $location = new Location();
+        $location->setSalle($salle);
+        $location->setClient($this->get('security.token_storage')->getToken()->getUser());
         $form = $this->createForm(LocationType::class, $location);
+        $form->add('save',SubmitType::Class, [
+            'label' => 'Valider la réservation'
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
             $em->persist($location);
             $em->flush();
 
@@ -42,6 +55,7 @@ class LocationController extends Controller
 
         return $this->render('location/new.html.twig', [
             'location' => $location,
+            'salle' => $salle,
             'form' => $form->createView(),
         ]);
     }
@@ -49,9 +63,13 @@ class LocationController extends Controller
     /**
      * @Route("/{id}", name="location_show", methods="GET")
      */
-    public function show(Location $location): Response
+    public function show(User $id): Response
     {
-        return $this->render('location/show.html.twig', ['location' => $location]);
+        $em = $this->getDoctrine()->getManager();
+
+        $location = $em->getRepository(Location::Class)->findBy(['client'=> $id]);
+
+        return $this->render('location/show.html.twig', ['locations'=> $location]);
     }
 
     /**
@@ -60,6 +78,9 @@ class LocationController extends Controller
     public function edit(Request $request, Location $location): Response
     {
         $form = $this->createForm(LocationType::class, $location);
+        $form->add('save',SubmitType::Class, [
+            'label' => 'Modifier la réservation'
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

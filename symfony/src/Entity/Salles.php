@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\User;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SallesRepository")
@@ -86,7 +85,7 @@ class Salles
       return $this;
     }
   
-    public function getclient()
+    public function getClient()
     {
       return $this->client;
     }

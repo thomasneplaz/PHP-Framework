@@ -29,7 +29,7 @@
             </tr>
         </tbody>
     </table>
-    {% if !=is_granted('ROLE_ADMIN') %}
+    {% if is_granted('ROLE_ADMIN') %}
       <a href="{{ path('user_index') }}">back to list</a>
     {% endif %}
 
